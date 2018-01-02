@@ -256,12 +256,12 @@ sh hadoop-daemon.sh start journalnode
 ## 效果展示
 第一步， 打开两个NN的监控页：
 
-![](static/Screen Shot 2017-02-16 at 11.12.24.png)
+![](static/ScreenShot2017-02-16at11.12.24.png)
 
-![](static/Screen Shot 2017-02-16 at 11.12.33.png)
+![](static/ScreenShot2017-02-16at11.12.33.png)
 
 第二步：kill hadoop1的namenode进程，查看hadoop2中namenode的状态由standby变为active：
-![](static/Screen Shot 2017-02-16 at 11.14.55.png)
+![](static/ScreenShot2017-02-16at11.14.55.png)
 重复几次，主备仍能自切。
 
 ## 参考资料

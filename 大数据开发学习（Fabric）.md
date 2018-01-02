@@ -12,7 +12,7 @@ Fabric现在支持Python2和Python3，安装：
 
 输入`fab`命令：
 
-![fab命令](static/Screen Shot 2017-01-18 at 11.44.41.png)
+![fab命令](static/ScreenShot2017-01-18at11.44.41.png)
 
 
 ## 三 使用
@@ -30,7 +30,7 @@ def hello():
 
 在当前路径下执行：`fab hello` and `fab -f hello.py hello`,输出结果：
 
-![测试结果](static/Screen Shot 2017-01-18 at 11.47.20.png)
+![测试结果](static/ScreenShot2017-01-18at11.47.20.png)
 
 其他使用，参见[《Fabric批量远程执行操作》](http://blog.csdn.net/kongxx/article/details/46480579)
 

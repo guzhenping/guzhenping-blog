@@ -13,7 +13,7 @@
 将Hive QL语句进行解析、编译优化，生成执行计划，然后调用底层的计算框架（诸如mapreduce,tez等）。
 
 服务器端组件和客户端组件。
-![](static/Screen Shot 2017-03-03 at 11.02.59.png)
+![](static/ScreenShot2017-03-03at11.02.59.png)
 
 ## 二 Hive安装
 此处演示的hive安装环境为：
