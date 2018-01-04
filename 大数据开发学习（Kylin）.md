@@ -7,12 +7,27 @@
 
 需要hadoop的historyjobserver启动
 
+## 度量计算
+
+1. sum
+
+2. min 
+- max
+- count
+- count_distinct
+- top_n
+- raw
+- extended_column
+- percentile
+
 ## 实际问题
 
 问题1：在同一个project里的Insight，可以看到所用cube的维度，但是不能共用，会报：No model found for rel
 
 
 ## Kylin的一些问题
+关于Kylin Cube构建原理，落地到HBase的过程: [Apache Kylin Cube 构建原理](https://blog.bcmeng.com/post/kylin-cube.html)
+
 关于维度的聚合组中各个含义，请参考 
 [https://kylin.apache.org/blog/2016/02/18/new-aggregation-group/](https://kylin.apache.org/blog/2016/02/18/new-aggregation-group/)
 
