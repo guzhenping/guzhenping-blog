@@ -31,6 +31,8 @@ https://mail-archives.apache.org/mod_mbox/kylin-dev/201512.mbox/%3C565D565C.3060
 
 问题3：kylin建model时，想做增量构建，在指定某列时间作为partition时，该列内容应该满足‘yyyy-MM-dd HH:mm:ss’的样子，不要使用unix_timestamp的类型。否则，构建后cube大小为零。 
 
+问题4：kylin建cube所用的字段不能用kylin自带关键字，例如:year, month, day, hour等。应当在最后加个下划线。
+
 ## Kylin的一些问题
 关于Kylin Cube构建原理，落地到HBase的过程: [Apache Kylin Cube 构建原理](https://blog.bcmeng.com/post/kylin-cube.html)
 
