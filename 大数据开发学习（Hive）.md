@@ -122,6 +122,11 @@ ALTER TABLE test_col_change CHANGE b b1 INT FIRST; 会将 b 列的名字修改�
 注意：对列的改变只会修改Hive 的元数据，而不会改变实际数据。用户应该确定保证元数据定义和实际数据结构的一致性。
 ```
 
+- 创建视图
+
+```
+create view xxx as select * from table A;
+```
 
 - 导入数据
 
