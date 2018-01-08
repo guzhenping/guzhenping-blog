@@ -61,6 +61,8 @@ platform,
 
 关于Kylin SQL 语法：[SQL language](http://calcite.apache.org/docs/reference.html)
 
+关于Kylin的关键字：
+[关键字源码](https://github.com/apache/kylin/blob/4d50b26972bb7bbaff852172990e0f189f987673/core-metadata/src/main/java/org/apache/kylin/source/adhocquery/HivePushDownConverter.java)
 关于维度的聚合组中各个含义，请参考 
 [https://kylin.apache.org/blog/2016/02/18/new-aggregation-group/](https://kylin.apache.org/blog/2016/02/18/new-aggregation-group/)
 
