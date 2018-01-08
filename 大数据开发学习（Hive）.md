@@ -105,6 +105,11 @@ alter table hello_world_parti to hello_world2_parti;
 alter table fact_jinrong_submit add columns(amount string, period string);
 ```
 
+- 改变表的location
+
+```
+alter table tracking2(表名) set location 'hdfs://ns2/user/hive/external/log/tracking'（新的位置）;
+```
 - 对表中的某一列进行修改，包括列的名称/列的数据类型/列的位置/列的注释
 
 ```
