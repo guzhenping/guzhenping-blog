@@ -29,6 +29,10 @@ ZooKeeper有三种配置方式：单节点、伪集群和集群。本文以集�
 - `zkServer.sh start-foreground`
 - `zkServer.sh start`
 
+
+## 参数详解
+[zookeeper的配置参数详解（zoo.cfg）](http://www.cnblogs.com/xiohao/p/5541093.html)
+
 ## 六 参考资料
 
 - [zookeeper 学习（一）](https://lanjingling.github.io/2016/02/21/zookeeper-study1/)
