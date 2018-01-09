@@ -5,10 +5,13 @@
 笔者作为一名数据仓库工程师，经历过两个数据仓库系统，一大一小。大的让笔者学到了很多，小的是笔者自己从0到1攒的。
 
 ![大的](static/2017_DW_in_baixing.jpeg)
+
 <p align="center">
 图1 基于hadoop的大数仓
 </p>
+
 ![小的](static/WechatIMG53.jpeg)
+
 <p align="center">图2 基于PG 10的小数仓</p>
 
 正在开启第三段职业生涯。
