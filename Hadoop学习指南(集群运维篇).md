@@ -55,6 +55,8 @@ storageType=DATA_NODE
 layoutVersion=-56
 ```
 
+## 添加删除节点
+[Hadoop添加删除节点](https://my.oschina.net/MrMichael/blog/291802)
 
 
 
