@@ -55,6 +55,11 @@ platform,
 
 建议提前规范好数据源，免得造成巨大的返工。
 ```
+问题5：build维度过不去
+具体报错： [BadQueryDetector] service.BadQueryDetector:160 : System free memory less than 100 MB. 0 queries running
+
+暂无解决办法。
+
 
 ## Kylin的一些问题
 关于Kylin Cube构建原理，落地到HBase的过程: [Apache Kylin Cube 构建原理](https://blog.bcmeng.com/post/kylin-cube.html)
