@@ -20,6 +20,11 @@
 - extended_column
 - percentile
 
+## 建模心得
+在通过星形模型建立事实表+维度表的过程中，操作比较复杂。但是，通过view的方式，就比较简单。
+
+view建模的方式，所有结果都在一张表里，只需要对该表进行维度和度量的划分即可。
+
 ## 实际问题
 
 问题1：在同一个project里的Insight，可以看到所用cube的维度，但是不能共用，会报：No model found for rel
@@ -59,6 +64,8 @@ platform,
 具体报错： [BadQueryDetector] service.BadQueryDetector:160 : System free memory less than 100 MB. 0 queries running
 
 暂无解决办法。
+
+问题6： kylin 不支持中文列名。kylin在创建中间表时，会使用中文+英文的方式做拼接，这个过程会报错。
 
 
 ## Kylin的一些问题
