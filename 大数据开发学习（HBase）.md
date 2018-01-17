@@ -9,7 +9,9 @@
 - HDFS：真正的数据持久层，并非必须是HDFS文件系统，但搭配HDFS是最佳选择，也是目前应用最广泛的选择。
 
 
+## 二 HBase namespace操作学习
 
+[HBase常用操作之namespace](http://blog.csdn.net/opensure/article/details/46470969)
 
 
 
