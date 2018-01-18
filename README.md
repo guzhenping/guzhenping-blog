@@ -18,7 +18,7 @@
 # 文章列表
 --------
 
-### 集群搭建与运维
+## 集群搭建与运维
  - [2016-11 集群搭建指南（上卷）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%8A%E5%8D%B7%EF%BC%89.md)
  - [2016-11 集群搭建指南（中卷）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%AD%E5%8D%B7%EF%BC%89.md)
  - [2016-11 集群搭建指南（下卷）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%8B%E5%8D%B7%EF%BC%89.md)
@@ -28,12 +28,12 @@
 - [2017-02 HA成功升级的总结](https://github.com/guzhenping/guzhenping-blog/blob/master/HA%E6%88%90%E5%8A%9F%E5%8D%87%E7%BA%A7%E7%9A%84%E6%80%BB%E7%BB%93.md)
 - [2017-10 大数据开发学习（Fabric）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88Fabric%EF%BC%89.md)
 
-### 数据仓库
+## 数据仓库
 - [2016-07 数据仓库学习（概念篇）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%AD%A6%E4%B9%A0(%E6%A6%82%E5%BF%B5%E7%AF%87)%20.md)
 - [2017-05 数据仓库学习（ETL）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88ETL%EF%BC%89.md)
 - [2018-01 数据仓库学习（维度建模）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E7%BB%B4%E5%BA%A6%E5%BB%BA%E6%A8%A1%EF%BC%89.md)
 
-### Hadoop生态圈
+## Hadoop生态圈
 
 - [2016-11 Hadoop学习指南（HDFS篇）](https://github.com/guzhenping/guzhenping-blog/blob/master/Hadoop%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97(HDFS%E7%AF%87)%20.md)
 - [2016-11 大数据开发学习（Hive）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88Hive%EF%BC%89.md)
