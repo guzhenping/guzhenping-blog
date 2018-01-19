@@ -45,3 +45,14 @@
 - [2018-01 大数据开发学习（Kylin）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88Kylin%EF%BC%89.md)
 - [2018-01 Redash使用指南](https://github.com/guzhenping/guzhenping-blog/blob/master/Redash%E4%B8%AD%E6%96%87%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3.md)
 - [2018-01 Redash权限分配](https://github.com/guzhenping/guzhenping-blog/blob/master/Redash%20%E6%9D%83%E9%99%90%E5%88%86%E9%85%8D.md)
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89345053-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-89345053-2');
+</script>
