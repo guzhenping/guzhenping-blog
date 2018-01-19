@@ -65,10 +65,15 @@ platform,
 
 暂无解决办法。
 
+这个问题可能是，kylin维度较多，把regionserver搞成僵死，进而导致的。
+
 问题6： kylin 不支持中文列名。kylin在创建中间表时，会使用中文+英文的方式做拼接，这个过程会报错。
 
 
 ## Kylin的一些问题
+
+关于Kylin的架构和原理，有图可供参考：[Kylin 的架构和原理](http://blog.csdn.net/lvguichen88/article/details/53054745)
+
 关于Kylin Cube构建原理，落地到HBase的过程: [Apache Kylin Cube 构建原理](https://blog.bcmeng.com/post/kylin-cube.html)
 
 关于Kylin SQL 语法：[SQL language](http://calcite.apache.org/docs/reference.html)
