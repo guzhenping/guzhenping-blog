@@ -2,12 +2,15 @@
 -------
 
 ## 一 Kylin介绍
+kylin是一款OLAP工具，背靠Hadoop，HBase，Spark，Kafka等大山，提供神奇体验。
 
 ## Kylin 安装与启动
+除了常规环境，还需要hadoop的historyjobserver启动。
 
-需要hadoop的historyjobserver启动
+具体参见官网，启动较为容易。
 
 ## 度量计算
+目前提供9种计算方法。
 
 1. sum
 
@@ -69,13 +72,18 @@ platform,
 
 问题6： kylin 不支持中文列名。kylin在创建中间表时，会使用中文+英文的方式做拼接，这个过程会报错。
 
-问题7：kylin 2.2.0 版本用户相关比较难搞。默认账户 ADMIM有问题，暂无好的解决办法。
+问题7：kylin 2.2.0 版本用户相关比较难搞。默认账户 ADMIN有问题，暂无好的解决办法。
 一种解决方式：升级到 2.3.0版本，修复了230个bug，对用户更加友好。
 
 
 ## Kylin的一些问题
 
+
+### 基础
+
 关于Kylin的架构和原理，有图可供参考：[Kylin 的架构和原理](http://blog.csdn.net/lvguichen88/article/details/53054745)
+
+Kylin比较详细的介绍：[Kylin对大数据量的多维分析](http://tech.meiyou.com/?p=97)
 
 关于Kylin Cube构建原理，落地到HBase的过程: [Apache Kylin Cube 构建原理](https://blog.bcmeng.com/post/kylin-cube.html)
 
@@ -84,12 +92,14 @@ platform,
 关于Kylin的关键字：
 [关键字源码](https://github.com/apache/kylin/blob/4d50b26972bb7bbaff852172990e0f189f987673/core-metadata/src/main/java/org/apache/kylin/source/adhocquery/HivePushDownConverter.java)
 
-关于维度的聚合组中各个含义，请参考 
-[https://kylin.apache.org/blog/2016/02/18/new-aggregation-group/](https://kylin.apache.org/blog/2016/02/18/new-aggregation-group/)
-
 关于一次正常查询的运行原理：[Kylin进阶之路](https://zhuanlan.zhihu.com/p/30613434)
 
 Kylin使用calcite做sql解析，可以参考calcite的语法文档：[https://calcite.apache.org/](https://calcite.apache.org/)
+
+
+### 维度问题
+关于维度的聚合组中各个含义，请参考 
+[https://kylin.apache.org/blog/2016/02/18/new-aggregation-group/](https://kylin.apache.org/blog/2016/02/18/new-aggregation-group/)
 
 Kylin Mandatory Dimension(必要维度)：[【技术帖】Apache Kylin高级设置： 必要维度 （Mandatory Dimension）原理解析](https://mp.weixin.qq.com/s?__biz=MzAwODE3ODU5MA==&mid=2653077943&idx=1&sn=007d2ba345d0e25ec12807aa47f9913d&chksm=80a4bf46b7d33650465d33e20dac7edc09a7ad9308d77de6a501685c8ae00cba661c1d612074&scene=21#wechat_redirect)
 
@@ -100,16 +110,21 @@ Kylin Joint Dimension(联合维度)：[【技术帖】Apache Kylin 高级设置�
 
 Kylin Aggregation Group(聚合组)：[【技术帖】Apache Kylin 高级设置：聚合组（Aggregation Group）原理解析](https://mp.weixin.qq.com/s?__biz=MzAwODE3ODU5MA==&mid=2653077921&idx=1&sn=89ae88bc63e71098166b74df7106c7bf&chksm=80a4bf50b7d3364692903aac3e901d09a516a8ff635e690e1e22b1d96abb4b2925c98cdace82&scene=21#wechat_redirect)
 
+### Server端
+配置负载均衡：[【技术贴】如何部署Apache Kylin集群实现负载均衡？](https://mp.weixin.qq.com/s?__biz=MzAwODE3ODU5MA==&mid=2653077900&idx=1&sn=5bcadd8e5bf1f65c7226344b2f05320e&chksm=80a4bf7db7d3366ba1901296110d51fccd0f41957003d90771db2c238161c41ee5ec555dc334&scene=21#wechat_redirect)
+
+### 进阶优化
+
 Kylin cube算法：[Apache Kylin的快速数据立方体算法——概述
 ](http://www.infoq.com/cn/articles/apache-kylin-algorithm)
 
 Kylin cube介绍：[Kylin使用之创建Cube和高级设置](http://blog.csdn.net/yu616568/article/details/50570536)
 
+别人的Cube优化案例：[Apache Kylin cube优化指南](http://www.jianshu.com/p/1e82e5dddae2)
+
+### API开发
+
 脚本触发增量更新：[Kylin定时增量build](http://blog.csdn.net/aaronhadoop/article/details/52806486)
-
-Cube优化案例：[Apache Kylin cube优化指南](http://www.jianshu.com/p/1e82e5dddae2)
-
-Kylin比较详细的介绍：[Kylin对大数据量的多维分析](http://tech.meiyou.com/?p=97)
 
 Kylin+superset 可视化方案案例：[Kylin初体验总结](http://zhuanlan.zhihu.com/p/26628057)
 
