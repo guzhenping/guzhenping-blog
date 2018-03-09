@@ -69,6 +69,9 @@ platform,
 
 问题6： kylin 不支持中文列名。kylin在创建中间表时，会使用中文+英文的方式做拼接，这个过程会报错。
 
+问题7：kylin 2.2.0 版本用户相关比较难搞。默认账户 ADMIM有问题，暂无好的解决办法。
+一种解决方式：升级到 2.3.0版本，修复了230个bug，对用户更加友好。
+
 
 ## Kylin的一些问题
 
@@ -80,6 +83,7 @@ platform,
 
 关于Kylin的关键字：
 [关键字源码](https://github.com/apache/kylin/blob/4d50b26972bb7bbaff852172990e0f189f987673/core-metadata/src/main/java/org/apache/kylin/source/adhocquery/HivePushDownConverter.java)
+
 关于维度的聚合组中各个含义，请参考 
 [https://kylin.apache.org/blog/2016/02/18/new-aggregation-group/](https://kylin.apache.org/blog/2016/02/18/new-aggregation-group/)
 
