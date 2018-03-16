@@ -28,6 +28,16 @@ kylin是一款OLAP工具，背靠Hadoop，HBase，Spark，Kafka等大山，提�
 
 view建模的方式，所有结果都在一张表里，只需要对该表进行维度和度量的划分即可。
 
+
+### 建模结果
+测试结果1：
+
+![](static/kylin建模2.png)
+
+测试结果2：
+![](static/kylin建模.png)
+
+
 ## 实际问题
 
 问题1：在同一个project里的Insight，可以看到所用cube的维度，但是不能共用，会报：No model found for rel
