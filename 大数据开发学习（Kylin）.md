@@ -132,6 +132,8 @@ Kylin cube介绍：[Kylin使用之创建Cube和高级设置](http://blog.csdn.ne
 
 别人的Cube优化案例：[Apache Kylin cube优化指南](http://www.jianshu.com/p/1e82e5dddae2)
 
+优化案例：[Apache Kylin 深入Cube和查询优化 提升Cube](https://zhuanlan.zhihu.com/p/29084008)
+
 ### API开发
 
 脚本触发增量更新：[Kylin定时增量build](http://blog.csdn.net/aaronhadoop/article/details/52806486)
