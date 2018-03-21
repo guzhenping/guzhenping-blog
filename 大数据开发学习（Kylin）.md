@@ -85,6 +85,8 @@ platform,
 问题7：kylin 2.2.0 版本用户相关比较难搞。默认账户 ADMIN有问题，暂无好的解决办法。
 一种解决方式：升级到 2.3.0版本，修复了230个bug，对用户更加友好。
 
+问题8：kylin 2.3以后采用spark 2.1.2版本，需要进行相关的配置。
+解决方式：https://kylin.apache.org/docs23/tutorial/cube_spark.html
 
 ## Kylin的一些问题
 
