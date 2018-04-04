@@ -35,7 +35,7 @@
 
 ## Hadoop生态圈
 
-- [2016-11 Hadoop学习指南（HDFS篇）](https://github.com/guzhenping/guzhenping-blog/blob/master/Hadoop%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97(HDFS%E7%AF%87)%20.md)
+- [2016-11 Hadoop学习指南（HDFS篇）](https://github.com/guzhenping/guzhenping-blog/blob/master/Hadoop%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%EF%BC%88HDFS%E7%AF%87%EF%BC%89.md)
 - [2016-11 大数据开发学习（Hive）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88Hive%EF%BC%89.md)
 - [2016-11 大数据开发学习（ZooKeeper）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88Zookeeper%EF%BC%89.md)
 - [2017-12 Hadoop学习指南（HBase篇）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88HBase%EF%BC%89.md)
