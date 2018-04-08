@@ -7,6 +7,9 @@ kudu，作为OLAP工具十分强劲。本文记录了笔者对其学习和使用
 ## 安装与启动
 待补充
 
+## 常规使用
+教学Demo参见：[Apache Kudu Quickstart](https://kudu.apache.org/docs/quickstart.html)
+
 ## 架构体系
 kudu架构：
 ![](static/kudu/kudu.png)
@@ -22,8 +25,16 @@ kudu架构：
 
 在小米，采用impala作为查询（计算）引擎，但是网上也有presto on kudu的组件可供选型（[传送门](https://github.com/MartinWeindel/presto-kudu)）。
 
+## 使用场景
+微店：
+
+ - [Kudu+Impala介绍](https://datascience.weidian-inc.com/kudu_impala/)
+- [Kudu的Schema表结构设计](https://datascience.weidian-inc.com/kudu_schema_design/)
+
 ## 参考资料
 
 关于Kudu的介绍： [Introducing Apache Kudu](https://kudu.apache.org/docs/#_kudu_impala_integration_features) 
 
 基于Kudu搭建OLAP工具：[小米：使用Kudu搭建OLAP服务](https://myslide.cn/slides/3584?vertical=1)
+
+基于Kudu的实际应用：[使用Spark Streaming + Kudu + Impala构建一个预测引擎](http://www.infoq.com/cn/articles/spark-streaming-kudu-impala)
