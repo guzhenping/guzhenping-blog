@@ -5,14 +5,20 @@ kudu，作为OLAP工具十分强劲。本文记录了笔者对其学习和使用
 注明：这篇文章是研究Kudu在OLAP的场景，不准备讨论其他Case。
 
 ## 安装与启动
-待补充
+最新版安装：[Installing Apache Kudu](https://kudu.apache.org/docs/installation.html)
+
+当需要使用kudu client功能时，需要安装：kudu-client、kudu-client-devel这两个C++的库。
 
 ## 常规使用
 教学Demo参见：[Apache Kudu Quickstart](https://kudu.apache.org/docs/quickstart.html)
 
+以上内容是对静态数据的使用，如果是一条实时的数据流，则采用kudu API的方式。需要去做定制开发。
+
 ## 架构体系
 kudu架构：
 ![](static/kudu/kudu.png)
+
+关于运行原理的文章，推荐：[Kudu设计原理初探](http://www.nosqlnotes.com/technotes/kudu-design/)
 
 ## OLAP服务
 作为OLAP服务，ETL环节的处理至关重要。以下列举了小米公司的场景：
@@ -32,6 +38,8 @@ kudu架构：
 - [Kudu的Schema表结构设计](https://datascience.weidian-inc.com/kudu_schema_design/)
 
 ## 参考资料
+
+运行原理：[kudu内部机制](https://blog.csdn.net/cdxxx5708/article/details/79074763)
 
 关于Kudu的介绍： [Introducing Apache Kudu](https://kudu.apache.org/docs/#_kudu_impala_integration_features) 
 
