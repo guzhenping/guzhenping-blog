@@ -7,12 +7,15 @@ kudu，作为OLAP工具十分强劲。本文记录了笔者对其学习和使用
 ## 安装与启动
 最新版安装：[Installing Apache Kudu](https://kudu.apache.org/docs/installation.html)
 
+推荐使用VM进行快速体验，[Apache Kudu Quickstart](https://kudu.apache.org/docs/quickstart.html)。
+
 当需要使用kudu client功能时，需要安装：kudu-client、kudu-client-devel这两个C++的库。
 
 ## 常规使用
 教学Demo参见：[Apache Kudu Quickstart](https://kudu.apache.org/docs/quickstart.html)
 
 以上内容是对静态数据的使用，如果是一条实时的数据流，则采用kudu API的方式。需要去做定制开发。
+
 
 ## 架构体系
 kudu架构：
