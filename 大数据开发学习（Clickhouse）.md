@@ -1,6 +1,6 @@
 
 ## 前言
-1年前，用过Greenplum，这是第一次接触MPP结构的OLAP系统。今天市面上常见的MPP架构工具，还有Clickhouse和Palo等。
+1年前，用过Greenplum，这是第一次接触MPP结构的OLAP系统。今天市面上常见的MPP架构工具，还有Clickhouse和Palo等。(当然，SQL on Hadoop体系的Presto和Impala也算是MPP结构，只是数据存储方面没有自己的东西，都是依赖hdfs,mysql等。)
 
 工作需要，对Clickhouse进行学习。
 
