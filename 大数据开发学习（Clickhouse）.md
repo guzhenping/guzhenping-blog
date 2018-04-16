@@ -45,9 +45,40 @@ clickhouse-client
 
 ```
 
+## 使用经验
 
+
+### Merge Tree
+选择engine时，尽量用merge tree.
+
+![](static/clickhouse/mergetree1.png)
+
+![](static/clickhouse/mergetree2.png)
+
+![](static/clickhouse/mergetree3.png)
+
+![](static/clickhouse/mergetree4.png)
+
+![](static/clickhouse/mergetree5.png)
+
+![](static/clickhouse/mergetree6.png)
+
+![](static/clickhouse/mergetree7.png)
+
+
+
+## 实际问题
+
+1. 关键字大小写敏感，对强转支持不太好。
+2. 特性上不支持事务，不支持update/delete。
+3. 关于分布式
+![](static/clickhouse/question_clickhouse1.png)
 
 ## 参考资料
+
+
+### 官方文档
+[What is ClickHouse](https://clickhouse.yandex/docs/en/single/#introduction)
 
 ### 数据同步
 kafka->Clickhouse：[Hangout with ClickHouse](http://jackpgao.github.io/2017/12/27/ClickHouse-with-Hangout/)
