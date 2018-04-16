@@ -5,7 +5,46 @@
 工作需要，对Clickhouse进行学习。
 
 ## 安装与启动
-暂时未掌握。
+
+Ubuntu上比较好安装，但是一般公司用的服务器都是Centos。这里只讨论在Centos 7的安装方式，centos 6请在Altinity公司提供的下载界面中自行寻找。
+
+### 安装命令
+
+```
+如果是装54362版本的包，其余所有依赖都需要是一致的。
+
+准备源依赖，由Altinity公司提供：
+curl -s https://packagecloud.io/install/repositories/Altinity/clickhouse/script.rpm.sh | sudo bash
+
+server-common:
+sudo yum install clickhouse-server-common-1.1.54362-1.el7.x86_64
+
+server:
+sudo yum install clickhouse-server-1.1.54362-1.el7.x86_64
+
+client：
+sudo yum install clickhouse-client-1.1.54362-1.el7.x86_64
+
+```
+
+关于Altinity公司的其他版本，可访问[这里下载](https://packagecloud.io/Altinity/clickhouse)。
+
+以上安装如有疑问，可以使用下方安装方式：
+
+- [https://github.com/red-soft-ru/clickhouse-rpm](https://github.com/red-soft-ru/clickhouse-rpm)
+
+
+### 启动
+
+```
+server端：
+sudo /etc/rc.d/init.d/clickhouse-server start
+
+client端：
+clickhouse-client
+
+```
+
 
 
 ## 参考资料
