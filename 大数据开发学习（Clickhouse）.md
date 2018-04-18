@@ -80,7 +80,6 @@ clickhouse-client
 ### 官方文档
 [What is ClickHouse](https://clickhouse.yandex/docs/en/single/#introduction)
 
-
 ### 配置文件
 
 [ClickHouse相关配置剖析](https://kuaibao.qq.com/s/20180409G06IIM00?refer=spider)
@@ -92,6 +91,12 @@ clickhouse-client
 [ClickHouse 用户名密码设置](https://www.jianshu.com/p/e339336e7bb9)
 
 [ClickHouse之访问权限控制](http://www.cnblogs.com/gomysql/p/6708796.html)
+
+## 引擎介绍
+
+[ClickHouse MergeTree引擎介绍](https://www.jianshu.com/p/48dbf2db2765)
+
+[ClickHouse Distribute 引擎深度解读](http://www.clickhouse.com.cn/topic/5a3e768d2141c2917483557e)
 
 ### 数据同步
 kafka->Clickhouse：[Hangout with ClickHouse](http://jackpgao.github.io/2017/12/27/ClickHouse-with-Hangout/)
