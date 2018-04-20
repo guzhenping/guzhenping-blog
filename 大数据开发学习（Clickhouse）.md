@@ -133,6 +133,12 @@ Code: 241. DB::Exception: Received from localhost:9000, ::1. DB::Exception: Memo
 
 这个问题导致Clickhouse的高并发特性很差。在前端暴露端口时，不能单独暴露一个host,需要做成有命名空间的方式，或者有个query平衡器的机制。
 
+解决办法：
+就上述问题，发现一个公司采用如下架构：
+
+![](static/clickhouse/clickhouse_rebalance.jpg)
+
+即：域名轮训。
 
 ## 参考资料
 
