@@ -1,0 +1,3 @@
+Clickhouse-presentations repo: https://github.com/yandex/clickhouse-presentations
+Funnels talk: https://github.com/yandex/clickhouse-presentations/blob/master/meetup9/funnels.pdf
+Recording: https://www.youtube.com/watch?v=YpurT78U2qA
