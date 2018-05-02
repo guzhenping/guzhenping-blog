@@ -18,12 +18,15 @@ curl -s https://packagecloud.io/install/repositories/Altinity/clickhouse/script.
 
 server-common:
 sudo yum install clickhouse-server-common-1.1.54362-1.el7.x86_64
+sudo yum install clickhouse-server-common-1.1.54380-1.el7.x86_64
 
 server:
 sudo yum install clickhouse-server-1.1.54362-1.el7.x86_64
+sudo yum install clickhouse-server-1.1.54380-1.el7.x86_64
 
 client：
 sudo yum install clickhouse-client-1.1.54362-1.el7.x86_64
+sudo yum install clickhouse-client-1.1.54380-1.el7.x86_64
 
 ```
 

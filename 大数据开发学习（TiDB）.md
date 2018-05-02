@@ -43,6 +43,32 @@ TiDB集存储与计算之大成，势头很猛。因为工作需要，进行学�
 - [说计算](https://pingcap.com/blog-cn/tidb-internal-2/)
 - [谈调度](https://pingcap.com/blog-cn/tidb-internal-3/)
 
+### 分布式机制
+
+![](static/tidb/tidb_分布式.jpg)
+
+### 存储模型
+
+>
+>TiKV
+ 的选择是 Key-Value 模型，并且提供有序遍历方法。简单来讲，可以将 TiKV 看做一个巨大的 Map，其中 Key 和 Value 
+都是原始的 Byte 数组，在这个 Map 中，Key 按照 Byte 数组总的原始二进制比特位比较顺序排列。
+
+### Region
+
+![](static/tidb/tidb_region.png)
+
+>
+>将数据划分成 Region 后，我们将会做两件重要的事情：
+
+> - 以 Region 为单位，将数据分散在集群中所有的节点上，并且尽量保证每个节点上服务的 Region 数量差不多
+> - 以 Region 为单位做 Raft 的复制和成员管理
+
+
+总结：
+![](static/tidb/tidb_region2.png)
+
+具备MVCC（多版本并发控制  multi-version concurroncy control）功能。
 
 ## 安装与启动
 暂时未掌握。
@@ -51,4 +77,8 @@ TiDB集存储与计算之大成，势头很猛。因为工作需要，进行学�
 
 
 ## 参考资料
+
+### 参数调优
+
+[TiKV 性能参数调优](https://github.com/pingcap/docs-cn/blob/master/op-guide/tune-tikv.md)
 

@@ -17,3 +17,14 @@ ALTER TABLE the_table ALTER COLUMN col_name TYPE integer USING (trim(col_name)::
 ALTER TABLE onetruereport.report_jinrong_submit 
 ALTER COLUMN createdtime TYPE integer USING (trim(createdtime)::integer);
 ```
+
+- 转多列
+
+```
+
+SELECT unnest(string_to_array('
+  xxx@xx.com,
+  ccc@cc.com', ',')) as email 
+```
+
+string_to_array：将字符串处理成array数组，unnest将array转成多列。
