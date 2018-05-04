@@ -141,13 +141,61 @@ Code: 241. DB::Exception: Received from localhost:9000, ::1. DB::Exception: Memo
 
 ![](static/clickhouse/clickhouse_rebalance.jpg)
 
-即：域名轮训。
+即：域名轮询。
+
+## SQL 实战
+
+第一步建表：
+```
+create table test_analysis (created_at DateTime, dt Date,  user String,  page_id String ) ENGINE=MergeTree(dt, (user, dt), 8192);
+```
+插入测试数据：
+
+```
+insert into table test_analysis Format Values
+('2018-4-24 18:45','2018-4-24','A','首页'),
+('2018-4-24 18:46','2018-4-24','A','购物车'),
+('2018-4-24 18:45','2018-4-24,'B','首页'),
+('2018-4-24 18:48','2018-4-24','B','商品详情'),
+('2018-4-24 18:49','2018-4-24','B','购物车'),
+('2018-4-24 18:46','2018-4-24','C','商品详情');
+```
+
+第二步，建立模型：
+
+``` 
+SELECT `user`,
+       created_at,
+       page_id,
+       gap1/60 AS "与第一个动作的间隔时间",
+       if(gap1 == 0, 0, runningDifference(gap1)/60) AS "与上一个动作的间隔时间"
+FROM
+  (SELECT `user`,
+          created_at,
+          fist_created_at,
+          page_id,
+          created_at-fist_created_at AS gap1
+   FROM test_analysis ANY
+   LEFT JOIN
+     (SELECT `user` ,
+             min(created_at) AS fist_created_at
+      FROM test_analysis
+      GROUP BY `user`) using(`user`)) AS t
+```
+获得的结果：
+
+
+[clickhouse 实战](http://www.clickhouse.com.cn/topic/5adf0d0a9d28dfde2ddc5fb2)
 
 ## 参考资料
 
 
 ### 官方文档
 [What is ClickHouse](https://clickhouse.yandex/docs/en/single/#introduction)
+
+官方写的体系结构文章：[Overview of ClickHouse architecture](https://clickhouse.yandex/docs/en/development/architecture/)
+
+翻译:[ClickHouse 内部架构介绍](http://www.clickhouse.com.cn/topic/5a3df7b02141c2917483557c)
 
 ### 配置文件
 
