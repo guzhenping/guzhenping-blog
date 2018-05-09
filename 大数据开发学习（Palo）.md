@@ -15,6 +15,10 @@ PALO = Mesa的存储引擎 + Impala查询引擎
 
 ![](static/palo/palo_architecture.jpg)
 
+## SQL 高级用法
+
+[SQL高级用法](https://cloud.baidu.com/doc/PALO/SQLGuide.html#.E5.86.85.E7.BD.AE.E5.87.BD.E6.95.B0)
+
 
 ## 安装与启动
 暂时未掌握。
