@@ -15,6 +15,39 @@ PALO = Mesa的存储引擎 + Impala查询引擎
 
 ![](static/palo/palo_architecture.jpg)
 
+## ETL 
+
+导入数据部分：
+
+```
+
+-- 一个demo, 在mysql执行。 broker_name需要自己提前定义
+ LOAD LABEL test_palo.gzp_2
+ (
+ DATA INFILE("hdfs://nanenode1:x020/user/hadoop/xxx/test_happysql")
+ INTO TABLE `test_happysql`
+ COLUMNS TERMINATED BY ","
+ )
+WITH BROKER broker_test ("username"="haxxx", "password"="")
+```
+
+
+## 配置文件
+
+网络相关参数解释：
+![](static/palo/palo_network_con.png)
+
+## 常用SQL
+
+```
+-- 查看 BE 状态
+show proc '/backends'
+
+-- 查看 FE 状态
+show proc '/frontends'
+
+```
+
 ## SQL 高级用法
 
 [SQL高级用法](https://cloud.baidu.com/doc/PALO/SQLGuide.html#.E5.86.85.E7.BD.AE.E5.87.BD.E6.95.B0)
