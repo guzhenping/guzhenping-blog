@@ -3,7 +3,7 @@
 
 ## 一 Redash介绍
 
-
+Redash是一款融合多数据源的可视化查询工具，用于Ad-hoc查询再好不过。除了官方支持的数据源，还可以通过复用代码开发支持Kylin、Clickhouse、TiDB、Palo、Druid等。
 
 
 ## 二 测试环境
@@ -130,13 +130,17 @@ sudo ./nginx
 ```
 
 ## 三 Redash VS Superset
-关于Redash：https://redash.io/；与Superset的区别与联系：https://www.zhihu.com/question/60369195/answer/258298127。
+
+关于Redash：https://redash.io/；
+
+与Superset的区别与联系：https://www.zhihu.com/question/60369195/answer/258298127。
 
 
 ## Bug
 hive 读 schema
 show columns in table , 无法处理中文comment,
 desc table , 无法处理没有字段的表，
+
 报错：Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. java.lang.ClassNotFoundException Class org.apache.hive.hcatalog.data.JsonSerDe not found
 
 
