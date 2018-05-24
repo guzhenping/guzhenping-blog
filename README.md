@@ -29,7 +29,7 @@
 - [2017-10 大数据开发学习（Fabric）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88Fabric%EF%BC%89.md)
 
 ## 数据仓库
-- [2016-07 数据仓库学习（概念篇）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%AD%A6%E4%B9%A0(%E6%A6%82%E5%BF%B5%E7%AF%87)%20.md)
+- [2016-07 数据仓库学习（概念篇）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E6%A6%82%E5%BF%B5%E7%AF%87%EF%BC%89.md)
 - [2017-05 数据仓库学习（ETL）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88ETL%EF%BC%89.md)
 - [2018-01 数据仓库学习（维度建模）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%AD%A6%E4%B9%A0%EF%BC%88%E7%BB%B4%E5%BA%A6%E5%BB%BA%E6%A8%A1%EF%BC%89.md)
 
