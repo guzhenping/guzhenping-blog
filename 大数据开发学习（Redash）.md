@@ -64,7 +64,7 @@ bin/run celery worker --app=redash.worker --beat -c8 -Qqueries,celery --maxtasks
 gunicorn -b 127.0.0.1:5000 --name redash -w 4 --max-requests 1000 redash.wsgi:app
 
 # 后台启动
-nohup /home/hadoop/anaconda3/envs/redash/bin/python /home/hadoop/anaconda3/envs/redash/bin/gunicorn -b 127.0.0.1:5000 --name redash -w 4 --max-requests 1000 redash.wsgi:app >> redash.log &
+nohup /home/hadoop/anaconda3/envs/redash/bin/python /home/hadoop/anaconda3/envs/redash/bin/gunicorn -b 0.0.0.0:5000 --name redash -w 4 --max-requests 1000 redash.wsgi:app >> redash.log &
 ```
 
 没有gunicorn命令的，需要装Python包。

@@ -47,6 +47,12 @@
 - [2018-01 Redash权限分配](https://github.com/guzhenping/guzhenping-blog/blob/master/Redash%20%E6%9D%83%E9%99%90%E5%88%86%E9%85%8D.md)
 - [2018-04 大数据开发学习（Clickhouse）](https://github.com/guzhenping/guzhenping-blog/blob/master/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88Clickhouse%EF%BC%89.md)
 
+
+## 区块链
+因为工作关系，学习到一点区块链的知识。特地开了一个公众号进行写作，欢迎扫码关注：
+
+![](static/认知区块链.jpg)
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89345053-2"></script>
 <script>
