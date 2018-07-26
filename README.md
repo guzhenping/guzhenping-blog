@@ -49,6 +49,10 @@
 
 
 ## 区块链
+
+- [2018-07 区块链简史](https://mp.weixin.qq.com/s/aw-8AmgasB20IwJHpCzxeA)
+- [2018-07 区块链分类](https://mp.weixin.qq.com/s/LNUPRo0fo5Qw02pP4bV2UQ)
+
 工作关系，学习到一点区块链的知识。特地开了一个公众号进行写作，欢迎扫码关注：
 
 ![](static/认知区块链.jpg)
