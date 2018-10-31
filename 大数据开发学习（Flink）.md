@@ -94,15 +94,20 @@ public class WordCountData {
     }
 }
 ```
+
 上述代码核心是将一段文本按单词切割，统计词频。flatMap()调用udf将文本切割并生成结构化数据，按单词分组后再sum。
 
 不得不说，java写的flink task代码太长....
 
 ## Core Concepts
 
+####
+
 ## Flink Case
 
-####
+#### 命令行
+
+[使用简介](https://ci.apache.org/projects/flink/flink-docs-release-1.6/ops/cli.html)
 
 ## 参考资料、
 
