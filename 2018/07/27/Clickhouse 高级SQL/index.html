@@ -18,18 +18,18 @@
   
   
   <title>Clickhouse 高级SQL | Hexo</title>
-  <meta name="description" content="前言测试数据集：    ca cb cc     A W 1   A W 2   B X 1   B Z 2   B Z 4    按最大/最小值/TOP1去重按ca和cb取cc最小值取值： 1234567select 	ca, 	cb, 	min(cc)from tablegroup by ca, 	cb    column_A column_B column_C     A W 1   B X">
+  <meta name="description" content="前言测试数据集：    ca cb cc     A W 1   A W 2   B X 1   B Z 2   B Z 4    按最大/最小值/TOP1去重按ca和cb取cc最小值取值： select      ca,      cb,      min(cc) from table group by ca,      cb    column_A column_B column_C">
 <meta name="keywords" content="OLAP,Clickhouse">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Clickhouse 高级SQL">
 <meta property="og:url" content="http://guzhenping.com/2018/07/27/Clickhouse 高级SQL/index.html">
 <meta property="og:site_name" content="谷震平的博客">
-<meta property="og:description" content="前言测试数据集：    ca cb cc     A W 1   A W 2   B X 1   B Z 2   B Z 4    按最大/最小值/TOP1去重按ca和cb取cc最小值取值： 1234567select 	ca, 	cb, 	min(cc)from tablegroup by ca, 	cb    column_A column_B column_C     A W 1   B X">
+<meta property="og:description" content="前言测试数据集：    ca cb cc     A W 1   A W 2   B X 1   B Z 2   B Z 4    按最大/最小值/TOP1去重按ca和cb取cc最小值取值： select      ca,      cb,      min(cc) from table group by ca,      cb    column_A column_B column_C">
 <meta property="og:locale" content="ZH">
 <meta property="og:updated_time" content="2018-11-30T02:43:37.103Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Clickhouse 高级SQL">
-<meta name="twitter:description" content="前言测试数据集：    ca cb cc     A W 1   A W 2   B X 1   B Z 2   B Z 4    按最大/最小值/TOP1去重按ca和cb取cc最小值取值： 1234567select 	ca, 	cb, 	min(cc)from tablegroup by ca, 	cb    column_A column_B column_C     A W 1   B X">
+<meta name="twitter:description" content="前言测试数据集：    ca cb cc     A W 1   A W 2   B X 1   B Z 2   B Z 4    按最大/最小值/TOP1去重按ca和cb取cc最小值取值： select      ca,      cb,      min(cc) from table group by ca,      cb    column_A column_B column_C">
   <!-- Canonical links -->
   <link rel="canonical" href="http://guzhenping.com/2018/07/27/Clickhouse 高级SQL/index.html">
   
@@ -197,16 +197,6 @@
     
       
   <div class="widget">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget-body">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Clickhouse/">Clickhouse</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flink/">Flink</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/">Hadoop</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kudu/">Kudu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kylin/">Kylin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OLAP/">OLAP</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redash/">Redash</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大数据开发/">大数据开发</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实时流/">实时流</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据仓库/">数据仓库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集群运维/">集群运维</a><span class="tag-list-count">8</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
       <a href="/tags/Clickhouse/" style="font-size: 13.25px;">Clickhouse</a> <a href="/tags/Flink/" style="font-size: 13px;">Flink</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Kudu/" style="font-size: 13px;">Kudu</a> <a href="/tags/Kylin/" style="font-size: 13.25px;">Kylin</a> <a href="/tags/OLAP/" style="font-size: 13.75px;">OLAP</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/Redash/" style="font-size: 13.5px;">Redash</a> <a href="/tags/Redis/" style="font-size: 13px;">Redis</a> <a href="/tags/大数据开发/" style="font-size: 13.75px;">大数据开发</a> <a href="/tags/实时流/" style="font-size: 13px;">实时流</a> <a href="/tags/数据仓库/" style="font-size: 13px;">数据仓库</a> <a href="/tags/集群运维/" style="font-size: 14px;">集群运维</a>
@@ -218,7 +208,7 @@
   <div class="widget">
     <h3 class="widget-title">Archive</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -354,6 +344,13 @@
 
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/27/Clickhouse 高级SQL/#comments" class="article-comment-link">Comments</a></span>
         
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 251(words)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 1(minutes)</span>
+	
+
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
@@ -396,8 +393,14 @@
 </tbody>
 </table>
 <h3 id="按最大-最小值-TOP1去重"><a href="#按最大-最小值-TOP1去重" class="headerlink" title="按最大/最小值/TOP1去重"></a>按最大/最小值/TOP1去重</h3><p>按ca和cb取cc最小值取值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select </span><br><span class="line">	ca, </span><br><span class="line">	cb, </span><br><span class="line">	min(cc)</span><br><span class="line">from table</span><br><span class="line">group by ca, </span><br><span class="line">	cb</span><br></pre></td></tr></table></figure>
-<table>
+<pre><code>select 
+    ca, 
+    cb, 
+    min(cc)
+from table
+group by ca, 
+    cb
+</code></pre><table>
 <thead>
 <tr>
 <th>column_A</th>
@@ -424,8 +427,13 @@
 </tbody>
 </table>
 <p>取最大，则使用max()函数。取一组值的TOP1也是同理。</p>
-<h3 id="按列合并多行（多-gt-少）"><a href="#按列合并多行（多-gt-少）" class="headerlink" title="按列合并多行（多-&gt;少）"></a>按列合并多行（多-&gt;少）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select </span><br><span class="line">	ca, </span><br><span class="line">	cb, </span><br><span class="line">	groupUniqArray(cc)</span><br><span class="line">from table</span><br><span class="line">group by ca, cb</span><br></pre></td></tr></table></figure>
-<table>
+<h3 id="按列合并多行（多-gt-少）"><a href="#按列合并多行（多-gt-少）" class="headerlink" title="按列合并多行（多-&gt;少）"></a>按列合并多行（多-&gt;少）</h3><pre><code>select 
+    ca, 
+    cb, 
+    groupUniqArray(cc)
+from table
+group by ca, cb
+</code></pre><table>
 <thead>
 <tr>
 <th>column_A</th>
@@ -453,8 +461,17 @@
 </table>
 <p>这是一种分组的概念，将相同的数据放在一起，需要被统计的数据放在array数据类型中。统计array，可以使用length()，获取数组长度，相当于分组count</p>
 <p>此外，groupArray也可以满足需求。</p>
-<h3 id="分组排序后取TopN"><a href="#分组排序后取TopN" class="headerlink" title="分组排序后取TopN"></a>分组排序后取TopN</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT ca,</span><br><span class="line">       groupArray(1)(cc) </span><br><span class="line">FROM</span><br><span class="line">  ( SELECT *</span><br><span class="line">   FROM table</span><br><span class="line">   ORDER BY ca,</span><br><span class="line">            cb,</span><br><span class="line">            cc )</span><br><span class="line">GROUP BY ca</span><br></pre></td></tr></table></figure>
-<table>
+<h3 id="分组排序后取TopN"><a href="#分组排序后取TopN" class="headerlink" title="分组排序后取TopN"></a>分组排序后取TopN</h3><pre><code>
+SELECT ca,
+       groupArray(1)(cc) 
+FROM
+  ( SELECT *
+   FROM table
+   ORDER BY ca,
+            cb,
+            cc )
+GROUP BY ca
+</code></pre><table>
 <thead>
 <tr>
 <th>column_A</th>
