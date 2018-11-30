@@ -45,6 +45,8 @@
   <link rel="stylesheet" href="/css/style.css">
   
   
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitment@0.0.3/style/default.min.css">
+  
   
   
 </head>
@@ -425,6 +427,8 @@
     
   <section id="comments">
   	
+
+    
   </section>
 
 
@@ -442,7 +446,7 @@
     
     
     <li class="next">
-      <a href="/2018/05/24/数据仓库学习（概念篇）/" title="数据仓库学习（概念篇）"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2018/05/24/大数据开发学习（Clickhouse）/" title="大数据开发学习（Clickhouse）"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
@@ -561,6 +565,26 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
    
+    
+<script src="//cdn.jsdelivr.net/npm/gitment@0.0.3/dist/gitment.browser.min.js"></script>
+<script>
+var gitment = new Gitment({
+  // id默认为当前页面url，如果url后带参数或锚点，gitment要重新初始化
+  // https://github.com/imsun/gitment/issues/55
+  // 解决方案：id:window.location.pathname,或者将id设置为当前页面标题
+  id: '大数据开发学习（Kudu）', 
+  owner: 'guzhenping', // 可以是你的GitHub用户名，也可以是github id
+  repo: 'https://github.com/guzhenping/blog-comment.git',
+  oauth: {
+    client_id: 'a4c4e166e9b273870bc9',
+    client_secret: '6f7f4e03f6d537b3e01719bdbe287187176f86fa',
+  }
+})
+gitment.render('comments')
+</script>
+
+
+
 
 
 
