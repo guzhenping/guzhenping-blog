@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang=ZH>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>Redash Model源码分析 | Hexo</title>
+  <meta name="description" content="前言掌握Redash执行原理，对于深度的二次开发至关重要。">
+<meta name="keywords" content="大数据开发,Redash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redash Model源码分析">
+<meta property="og:url" content="http://guzhenping.com/2018/07/26/Redash Model整理分析/index.html">
+<meta property="og:site_name" content="谷震平的博客">
+<meta property="og:description" content="前言掌握Redash执行原理，对于深度的二次开发至关重要。">
+<meta property="og:locale" content="ZH">
+<meta property="og:updated_time" content="2018-11-30T02:43:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redash Model源码分析">
+<meta name="twitter:description" content="前言掌握Redash执行原理，对于深度的二次开发至关重要。">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://guzhenping.com/2018/07/26/Redash Model整理分析/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="谷震平的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/guzhenping" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">谷震平</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">大数据，区块链，全沾</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech="">
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="https://github.com/guzhenping">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/guzhenping" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope="" itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/">大数据</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/可视化/">可视化</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Clickhouse/">Clickhouse</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flink/">Flink</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/">Hadoop</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kudu/">Kudu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kylin/">Kylin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OLAP/">OLAP</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redash/">Redash</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端开发/">前端开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大数据开发/">大数据开发</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实时流/">实时流</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据仓库/">数据仓库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集群运维/">集群运维</a><span class="tag-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Clickhouse/" style="font-size: 13.25px;">Clickhouse</a> <a href="/tags/Flink/" style="font-size: 13px;">Flink</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Kudu/" style="font-size: 13px;">Kudu</a> <a href="/tags/Kylin/" style="font-size: 13.25px;">Kylin</a> <a href="/tags/OLAP/" style="font-size: 13.75px;">OLAP</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/Redash/" style="font-size: 13.5px;">Redash</a> <a href="/tags/Redis/" style="font-size: 13px;">Redis</a> <a href="/tags/前端开发/" style="font-size: 13px;">前端开发</a> <a href="/tags/大数据开发/" style="font-size: 13.75px;">大数据开发</a> <a href="/tags/实时流/" style="font-size: 13px;">实时流</a> <a href="/tags/数据仓库/" style="font-size: 13px;">数据仓库</a> <a href="/tags/集群运维/" style="font-size: 14px;">集群运维</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/29/前端开发学习笔记（一）/" class="title">前端开发学习笔记（一）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-29T09:04:48.000Z" itemprop="datePublished">2018-11-29</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/06/数据库学习（Postgre）/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-05T16:00:00.000Z" itemprop="datePublished">2018-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/大数据/">大数据</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/02/大数据开发学习（Redis）/" class="title">大数据开发学习（Redis）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-02T09:04:48.000Z" itemprop="datePublished">2018-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/大数据/">大数据</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/02/大数据开发学习（Redash）/" class="title">Redash开发指南</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-02T09:04:48.000Z" itemprop="datePublished">2018-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/02/Redash Redis队列运维/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-01T16:00:00.000Z" itemprop="datePublished">2018-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Redash Model整理分析" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redash Model源码分析
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/07/26/Redash Model整理分析/" class="article-date">
+	  <time datetime="2018-07-26T09:04:48.000Z" itemprop="datePublished">2018-07-26</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/大数据/">大数据</a>►<a class="article-category-link" href="/categories/大数据/可视化/">可视化</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Redash/">Redash</a>, <a class="article-tag-link" href="/tags/大数据开发/">大数据开发</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/26/Redash Model整理分析/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>掌握Redash执行原理，对于深度的二次开发至关重要。</p>
+<a id="more"></a>
+<h2 id="query功能"><a href="#query功能" class="headerlink" title="query功能"></a>query功能</h2><p>SQL查询是Redash的核心功能之一。通常情况下，用户在前端会生成如下参数：</p>
+<ul>
+<li>query.data_source：下列列表中的数据源，必须选</li>
+<li>parameter_values：用户自定义的参数值，可无</li>
+<li>query.query_text：用户自定义的SQL文本，必须写</li>
+<li>query.id：前端自动生成的查询id，系统生成</li>
+</ul>
+<p>在上述条件具备后，将会调用Redash API： <code>/api/queries/</code>进行任务提交。</p>
+<p>所有任务将会被redash.handlers.query_result.run_query()方法接受处理。此处将进行参数校验，语法解析，任务传输等方面的处理。</p>
+<p>多数的查询场景，先将SQL文本hash后，去缓存队列和后台数据库（Redash的Postgre）进行寻找，找不到再发给celery让worker执行该SQL。</p>
+<p>负责具体执行：redash.models.QueryResult()类实例 和redash.tasks.queries.enqueue_query()方法。前者：负责查现有的结果；后者：立即执行相关SQL语句。</p>
+<p>在enqueue_query()方法里，先连Redis,将任务加入队列，持续监听查询结果。</p>
+<p>核心代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">while try_count &lt; 5:</span><br><span class="line">    try_count += 1</span><br><span class="line"></span><br><span class="line">    pipe = redis_connection.pipeline()</span><br><span class="line">    try:</span><br><span class="line">        pipe.watch(_job_lock_id(query_hash, data_source.id))</span><br><span class="line">        job_id = pipe.get(_job_lock_id(query_hash, data_source.id))</span><br><span class="line">        if job_id:</span><br><span class="line">            logging.info(&quot;[%s] Found existing job: %s&quot;, query_hash, job_id)</span><br><span class="line"></span><br><span class="line">            job = QueryTask(job_id=job_id)</span><br><span class="line"></span><br><span class="line">            if job.ready():</span><br><span class="line">                logging.info(&quot;[%s] job found is ready (%s), removing lock&quot;, query_hash, job.celery_status)</span><br><span class="line">                redis_connection.delete(_job_lock_id(query_hash, data_source.id))</span><br><span class="line">                job = None</span><br><span class="line"></span><br><span class="line">        if not job:</span><br><span class="line">            pipe.multi()</span><br><span class="line"></span><br><span class="line">            time_limit = None</span><br><span class="line"></span><br><span class="line">            if scheduled_query:</span><br><span class="line">                queue_name = data_source.scheduled_queue_name</span><br><span class="line">                scheduled_query_id = scheduled_query.id</span><br><span class="line">            else:</span><br><span class="line">                queue_name = data_source.queue_name</span><br><span class="line">                scheduled_query_id = None</span><br><span class="line">                time_limit = settings.ADHOC_QUERY_TIME_LIMIT</span><br><span class="line"></span><br><span class="line">            result = execute_query.apply_async(args=(query, data_source.id, metadata, user_id, scheduled_query_id),</span><br><span class="line">                                               queue=queue_name,</span><br><span class="line">                                               time_limit=time_limit)</span><br><span class="line">            job = QueryTask(async_result=result)</span><br><span class="line">            tracker = QueryTaskTracker.create(</span><br><span class="line">                result.id, &apos;created&apos;, query_hash, data_source.id,</span><br><span class="line">                scheduled_query is not None, metadata)</span><br><span class="line">            tracker.save(connection=pipe)</span><br><span class="line"></span><br><span class="line">            logging.info(&quot;[%s] Created new job: %s&quot;, query_hash, job.id)</span><br><span class="line">            pipe.set(_job_lock_id(query_hash, data_source.id), job.id, settings.JOB_EXPIRY_TIME)</span><br><span class="line">            pipe.execute()</span><br><span class="line">        break</span><br><span class="line"></span><br><span class="line">    except redis.WatchError:</span><br><span class="line">        continue</span><br></pre></td></tr></table></figure>
+<p>以上是Query功能的分析。主要组件：</p>
+<ul>
+<li>celery分布式框架</li>
+<li>redis缓存和任务队列</li>
+<li>postgre后台DB。</li>
+</ul>
+<p>相关功能的设计比较中规中矩，报错异常的检测较少，后续值得优化。</p>
+<h2 id="Model层"><a href="#Model层" class="headerlink" title="Model层"></a>Model层</h2><p>model层是Redash的设计核心，每个类对应后台数据库一张表和一个功能。</p>
+<ul>
+<li>access_permission, 权限表</li>
+<li>alembic_version,版本号         </li>
+<li>alert_subscriptions，报警描述</li>
+<li>alerts，报警列表         </li>
+<li>api_keys, api key管理</li>
+<li>changes，升级改动</li>
+<li>dashboards，报表存储</li>
+<li>data_source_groups,每个组对应的数据源</li>
+<li>data_sources，所有数据源</li>
+<li>events，后台日志</li>
+<li>groups，所有分组列表</li>
+<li>notification_destinations，报警的模板和目的地</li>
+<li>organizations， 组织         </li>
+<li>queries，所有queris         </li>
+<li>query_results，query的结果，另一种缓存</li>
+<li>query_snippets，SQL的评论         </li>
+<li>users, 用户已列表</li>
+<li>visualizations，可视化图表存储</li>
+<li>widgets，可视化控件</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://guzhenping.com/2018/07/26/Redash Model整理分析/" title="Redash Model源码分析" target="_blank" rel="external">http://guzhenping.com/2018/07/26/Redash Model整理分析/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/guzhenping" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/guzhenping" target="_blank"><span class="text-dark">谷震平</span><small class="ml-1x">大数据，区块链，全沾</small></a></h3>
+        <div>工作两年多，在大数据和数仓领域搞过前后端系统开发，SQL建模和数据可视化。个人比较喜欢折腾，对新技术都很感兴趣；热衷开源项目，是区块链项目EKT的contributor。比较喜欢要求复合能力的岗位。个人blog：http://guzhenping.com。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom="">
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/07/27/Clickhouse 高级SQL/" title="Clickhouse 高级SQL"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/05/25/大数据开发学习（Kudu）/" title="大数据开发学习（Kudu）"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan">
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan">
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope="" itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/guzhenping" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>
