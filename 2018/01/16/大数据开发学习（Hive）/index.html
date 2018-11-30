@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang=ZH>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>Hexo</title>
+  <meta name="description" content="Hadoop学习指南（Hive篇） 一 Hive介绍 CLI(command line interface) JDBC/ODBC Thrift server web gui metastore：存储hive的元数据 driver(complier,optimizer和executor)：将Hive QL语句进行解析、编译优化，生成执行计划，然后调用底层的计算框架（诸如mapreduce,tez等）">
+<meta name="keywords" content="谷震平">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谷震平的博客">
+<meta property="og:url" content="http://guzhenping.com/2018/01/16/大数据开发学习（Hive）/index.html">
+<meta property="og:site_name" content="谷震平的博客">
+<meta property="og:description" content="Hadoop学习指南（Hive篇） 一 Hive介绍 CLI(command line interface) JDBC/ODBC Thrift server web gui metastore：存储hive的元数据 driver(complier,optimizer和executor)：将Hive QL语句进行解析、编译优化，生成执行计划，然后调用底层的计算框架（诸如mapreduce,tez等）">
+<meta property="og:locale" content="ZH">
+<meta property="og:image" content="http://guzhenping.com/2018/01/16/大数据开发学习（Hive）/static/ScreenShot2017-03-03at11.02.59.png">
+<meta property="og:image" content="http://guzhenping.com/2018/01/16/大数据开发学习（Hive）/static/ScreenShot2017-01-05at12.14.07.png">
+<meta property="og:image" content="http://guzhenping.com/2018/01/16/大数据开发学习（Hive）/static/20160805174521925.png">
+<meta property="og:updated_time" content="2018-11-28T06:32:43.884Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="谷震平的博客">
+<meta name="twitter:description" content="Hadoop学习指南（Hive篇） 一 Hive介绍 CLI(command line interface) JDBC/ODBC Thrift server web gui metastore：存储hive的元数据 driver(complier,optimizer和executor)：将Hive QL语句进行解析、编译优化，生成执行计划，然后调用底层的计算框架（诸如mapreduce,tez等）">
+<meta name="twitter:image" content="http://guzhenping.com/2018/01/16/大数据开发学习（Hive）/static/ScreenShot2017-03-03at11.02.59.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://guzhenping.com/2018/01/16/大数据开发学习（Hive）/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="谷震平的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/guzhenping" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">谷震平</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">大数据，区块链，全沾</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech="">
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="https://github.com/guzhenping">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/guzhenping" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope="" itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/">大数据</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/可视化/">可视化</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Clickhouse/">Clickhouse</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flink/">Flink</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/">Hadoop</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kudu/">Kudu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kylin/">Kylin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OLAP/">OLAP</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redash/">Redash</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端开发/">前端开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大数据开发/">大数据开发</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实时流/">实时流</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据仓库/">数据仓库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集群运维/">集群运维</a><span class="tag-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Clickhouse/" style="font-size: 13.25px;">Clickhouse</a> <a href="/tags/Flink/" style="font-size: 13px;">Flink</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Kudu/" style="font-size: 13px;">Kudu</a> <a href="/tags/Kylin/" style="font-size: 13.25px;">Kylin</a> <a href="/tags/OLAP/" style="font-size: 13.75px;">OLAP</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/Redash/" style="font-size: 13.5px;">Redash</a> <a href="/tags/Redis/" style="font-size: 13px;">Redis</a> <a href="/tags/前端开发/" style="font-size: 13px;">前端开发</a> <a href="/tags/大数据开发/" style="font-size: 13.75px;">大数据开发</a> <a href="/tags/实时流/" style="font-size: 13px;">实时流</a> <a href="/tags/数据仓库/" style="font-size: 13px;">数据仓库</a> <a href="/tags/集群运维/" style="font-size: 14px;">集群运维</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/29/前端开发学习笔记（一）/" class="title">前端开发学习笔记（一）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-29T09:04:48.000Z" itemprop="datePublished">2018-11-29</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/06/数据库学习（Postgre）/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-05T16:00:00.000Z" itemprop="datePublished">2018-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/大数据/">大数据</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/02/大数据开发学习（Redash）/" class="title">Redash开发指南</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-02T09:04:48.000Z" itemprop="datePublished">2018-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/大数据/">大数据</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/02/大数据开发学习（Redis）/" class="title">大数据开发学习（Redis）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-02T09:04:48.000Z" itemprop="datePublished">2018-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/02/Redash Redis队列运维/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-01T16:00:00.000Z" itemprop="datePublished">2018-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-大数据开发学习（Hive）" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/01/16/大数据开发学习（Hive）/" class="article-date">
+	  <time datetime="2018-01-15T16:00:00.000Z" itemprop="datePublished">2018-01-16</time>
+	</a>
+</span>
+        
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/01/16/大数据开发学习（Hive）/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="Hadoop学习指南（Hive篇）"><a href="#Hadoop学习指南（Hive篇）" class="headerlink" title="Hadoop学习指南（Hive篇）"></a>Hadoop学习指南（Hive篇）</h1><hr>
+<h2 id="一-Hive介绍"><a href="#一-Hive介绍" class="headerlink" title="一 Hive介绍"></a>一 Hive介绍</h2><ul>
+<li>CLI(command line interface)</li>
+<li>JDBC/ODBC</li>
+<li>Thrift server</li>
+<li>web gui</li>
+<li>metastore：<br>存储hive的元数据</li>
+<li>driver(complier,optimizer和executor)：<br>将Hive QL语句进行解析、编译优化，生成执行计划，然后调用底层的计算框架（诸如mapreduce,tez等）。</li>
+</ul>
+<p>服务器端组件和客户端组件。<br><img src="static/ScreenShot2017-03-03at11.02.59.png" alt=""></p>
+<h2 id="二-Hive安装"><a href="#二-Hive安装" class="headerlink" title="二 Hive安装"></a>二 Hive安装</h2><p>此处演示的hive安装环境为：</p>
+<ul>
+<li>CentOS 6.5 64位</li>
+<li>Hive 2.1.1</li>
+<li>Java 1.8</li>
+</ul>
+<h2 id="三-关于HiveQL"><a href="#三-关于HiveQL" class="headerlink" title="三 关于HiveQL"></a>三 关于HiveQL</h2><p>HiveQL虽然基于SQL，但是并不严格遵循SQL-92的标准。HiveQL提供SQL没有的扩展，包括：</p>
+<h2 id="四-Hive的使用"><a href="#四-Hive的使用" class="headerlink" title="四 Hive的使用"></a>四 Hive的使用</h2><ul>
+<li>创建数据库</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 创建hello_world数据库</span><br><span class="line">create database hello_world;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看所有数据库</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看所有表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建内部表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 创建hello_world_inner</span><br><span class="line">create table hello_world_inner</span><br><span class="line">(</span><br><span class="line">    id bigint, </span><br><span class="line">    account string, </span><br><span class="line">    name string,</span><br><span class="line">    age int</span><br><span class="line">)</span><br><span class="line">row format delimited fields terminated by &apos;\t&apos;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建分区表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table hello_world_parti</span><br><span class="line">(</span><br><span class="line">	id bigint,</span><br><span class="line">	name string</span><br><span class="line">)</span><br><span class="line">partitioned by (dt string, country string)</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>展示表分区</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show partition hello_world_parti;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建外部表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>注外部表和hive内的表区别：</p>
+<p>1、在导入数据到外部表，数据并没有移动到自己的数据仓库目录下，也就是说外部表中的数据并不是由它自己来管理的！而表则不一样；</p>
+<p>2、在删除表的时候，Hive将会把属于表的元数据和数据全部删掉；而删除外部表的时候，Hive仅仅删除外部表的元数据，数据是不会删除的！</p>
+<ul>
+<li>更改表名称</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table hello_world_parti to hello_world2_parti;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改表结构</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 新增列</span><br><span class="line">alter table fact_jinrong_submit add columns(amount string, period string);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>改变表的location</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table tracking2(表名) set location &apos;hdfs://ns2/user/hive/external/log/tracking&apos;（新的位置）;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对表中的某一列进行修改，包括列的名称/列的数据类型/列的位置/列的注释</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name CHANGE [COLUMN] col_old_name col_new_name column_type[COMMENT col_comment] [FIRST|AFTER column_name]</span><br><span class="line">这个命令可以允许用户修改一个列的名称、数据类型、注释或者位置</span><br><span class="line">create table test_col_change (a int,b int, c int);</span><br><span class="line"></span><br><span class="line">修改列的名称，后面一定要加上数据类型：</span><br><span class="line">ALTER TABLE test_col_change CHANGE a a1 INT; 将 a 列的名字改为 a1.</span><br><span class="line"></span><br><span class="line">ALTER TABLE test_col_change CHANGE a a1 STRING AFTER b; 将 a 列的名字改为 a1，a 列的数据类型改为string，并将它放置在列 b 之后。新的表结构为： b int, a1 string, c int.</span><br><span class="line"></span><br><span class="line">ALTER TABLE test_col_change CHANGE b b1 INT FIRST; 会将 b 列的名字修改为b1, 并将它放在第一列。新表的结构为： b1 int, a string, c int.</span><br><span class="line"></span><br><span class="line">注意：对列的改变只会修改Hive 的元数据，而不会改变实际数据。用户应该确定保证元数据定义和实际数据结构的一致性。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建视图</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create view xxx as select * from table A;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>导入数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data local inpath &apos;/home/deploy/user_info.txt&apos; into table user_info;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>导出数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="四-导入数据的几种方式"><a href="#四-导入数据的几种方式" class="headerlink" title="四 导入数据的几种方式"></a>四 导入数据的几种方式</h2><p>比如有一张测试表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">create table hello</span><br><span class="line">(</span><br><span class="line">id int,</span><br><span class="line">name string,</span><br><span class="line">message string</span><br><span class="line">)</span><br><span class="line">partitioned by (</span><br><span class="line">dt string</span><br><span class="line">)</span><br><span class="line">ROW FORMAT DELIMITED</span><br><span class="line">FIELDS TERMINATED BY &apos;\t&apos;</span><br><span class="line">STORED AS TEXTFILE</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从本地文件系统中导入数据到hive表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data local inpath &apos;data.txt&apos; into table hello;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从HDFS上导入数据到hive表</li>
+<li>从别的表中查询出相应的数据并导入到hive表中</li>
+<li>创建表时从别的表查到数据并插入的所创建的表中</li>
+</ul>
+<h2 id="四-Hive-Architecture"><a href="#四-Hive-Architecture" class="headerlink" title="四 Hive Architecture"></a>四 Hive Architecture</h2><p><img src="static/ScreenShot2017-01-05at12.14.07.png" alt=""></p>
+<p>引自官网，务必仔细阅读：</p>
+<blockquote>
+<p>Figure 1 also shows how a typical query flows through the system. The UI calls the execute interface to the Driver (step 1 in Figure 1). The Driver creates a session handle for the query and sends the query to the compiler to generate an execution plan (step 2). The compiler gets the necessary metadata from the metastore (steps 3 and 4). This metadata is used to typecheck the expressions in the query tree as well as to prune partitions based on query predicates. The plan generated by the compiler (step 5) is a DAG of stages with each stage being either a map/reduce job, a metadata operation or an operation on HDFS. For map/reduce stages, the plan contains map operator trees (operator trees that are executed on the mappers) and a reduce operator tree (for operations that need reducers). The execution engine submits these stages to appropriate components (steps 6, 6.1, 6.2 and 6.3). In each task (mapper/reducer) the deserializer associated with the table or intermediate outputs is used to read the rows from HDFS files and these are passed through the associated operator tree. Once the output is generated, it is written to a temporary HDFS file though the serializer (this happens in the mapper in case the operation does not need a reduce). The temporary files are used to provide data to subsequent map/reduce stages of the plan. For DML operations the final temporary file is moved to the table’s location. This scheme is used to ensure that dirty data is not read (file rename being an atomic operation in HDFS). For queries, the contents of the temporary file are read by the execution engine directly from HDFS as part of the fetch call from the Driver (steps 7, 8 and 9).</p>
+</blockquote>
+<p>一个完成的hive查询过程如上所述。上次过程，也展示了hive的主要组件，以及同hadoop的接口。这些重要的组件是：</p>
+<ul>
+<li>UI：用户向系统提交查询及其他操作。</li>
+<li>Driver：接受用户发来的查询等操作。</li>
+<li>Compiler：解析查询，包括：</li>
+<li>Metastore：存储所有的</li>
+<li>Execution Engine：执行</li>
+</ul>
+<h2 id="五-Hive-Data-Model"><a href="#五-Hive-Data-Model" class="headerlink" title="五 Hive Data Model"></a>五 Hive Data Model</h2><p>Hive的数据被组织成：</p>
+<ul>
+<li>tables</li>
+<li>partitions</li>
+<li>buckets</li>
+</ul>
+<h2 id="六-Metastore"><a href="#六-Metastore" class="headerlink" title="六 Metastore"></a>六 Metastore</h2><p>这是hive</p>
+<h2 id="五-常见问题"><a href="#五-常见问题" class="headerlink" title="五 常见问题"></a>五 常见问题</h2><h3 id="1-多次初始化"><a href="#1-多次初始化" class="headerlink" title="1. 多次初始化"></a>1. 多次初始化</h3><p>可能解法:在终端输入<code>hive</code>命令时，hive的CLI会自动加载一个配置文件：</p>
+<p>/home/deploy/apache-hive-2.1.1-bin/conf/hive-log4j2.properties</p>
+<p>文件内容（可以略过）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"># Licensed to the Apache Software Foundation (ASF) under one</span><br><span class="line"># or more contributor license agreements.  See the NOTICE file</span><br><span class="line"># distributed with this work for additional information</span><br><span class="line"># regarding copyright ownership.  The ASF licenses this file</span><br><span class="line"># to you under the Apache License, Version 2.0 (the</span><br><span class="line"># &quot;License&quot;); you may not use this file except in compliance</span><br><span class="line"># with the License.  You may obtain a copy of the License at</span><br><span class="line">#</span><br><span class="line">#     http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line">#</span><br><span class="line"># Unless required by applicable law or agreed to in writing, software</span><br><span class="line"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line"># See the License for the specific language governing permissions and</span><br><span class="line"># limitations under the License.</span><br><span class="line"></span><br><span class="line">status = INFO</span><br><span class="line">name = HiveLog4j2</span><br><span class="line">packages = org.apache.hadoop.hive.ql.log</span><br><span class="line"></span><br><span class="line"># list of properties</span><br><span class="line">property.hive.log.level = INFO</span><br><span class="line">property.hive.root.logger = DRFA</span><br><span class="line">property.hive.log.dir = $&#123;sys:java.io.tmpdir&#125;/$&#123;sys:user.name&#125;</span><br><span class="line">property.hive.log.file = hive.log</span><br><span class="line">property.hive.perflogger.log.level = INFO</span><br><span class="line"></span><br><span class="line"># list of all appenders</span><br><span class="line">appenders = console, DRFA</span><br><span class="line"></span><br><span class="line"># console appender</span><br><span class="line">appender.console.type = Console</span><br><span class="line">appender.console.name = console</span><br><span class="line">appender.console.target = SYSTEM_ERR</span><br><span class="line">appender.console.layout.type = PatternLayout</span><br><span class="line">appender.console.layout.pattern = %d&#123;ISO8601&#125; %5p [%t] %c&#123;2&#125;: %m%n</span><br><span class="line"></span><br><span class="line"># daily rolling file appender</span><br><span class="line">appender.DRFA.type = RollingRandomAccessFile</span><br><span class="line">appender.DRFA.name = DRFA</span><br><span class="line">appender.DRFA.fileName = $&#123;sys:hive.log.dir&#125;/$&#123;sys:hive.log.file&#125;</span><br><span class="line"># Use %pid in the filePattern to append &lt;process-id&gt;@&lt;host-name&gt; to the filename if you want separate log files for different CLI session</span><br><span class="line">appender.DRFA.filePattern = $&#123;sys:hive.log.dir&#125;/$&#123;sys:hive.log.file&#125;.%d&#123;yyyy-MM-dd&#125;</span><br><span class="line">appender.DRFA.layout.type = PatternLayout</span><br><span class="line">appender.DRFA.layout.pattern = %d&#123;ISO8601&#125; %5p [%t] %c&#123;2&#125;: %m%n</span><br><span class="line">appender.DRFA.policies.type = Policies</span><br><span class="line">appender.DRFA.policies.time.type = TimeBasedTriggeringPolicy</span><br><span class="line">appender.DRFA.policies.time.interval = 1</span><br><span class="line">appender.DRFA.policies.time.modulate = true</span><br><span class="line">appender.DRFA.strategy.type = DefaultRolloverStrategy</span><br><span class="line">appender.DRFA.strategy.max = 30</span><br><span class="line"></span><br><span class="line"># list of all loggers</span><br><span class="line">loggers = NIOServerCnxn, ClientCnxnSocketNIO, DataNucleus, Datastore, JPOX, PerfLogger</span><br><span class="line"></span><br><span class="line">logger.NIOServerCnxn.name = org.apache.zookeeper.server.NIOServerCnxn</span><br><span class="line">logger.NIOServerCnxn.level = WARN</span><br><span class="line"></span><br><span class="line">logger.ClientCnxnSocketNIO.name = org.apache.zookeeper.ClientCnxnSocketNIO</span><br><span class="line">logger.ClientCnxnSocketNIO.level = WARN</span><br><span class="line"></span><br><span class="line">logger.DataNucleus.name = DataNucleus</span><br><span class="line">logger.DataNucleus.level = ERROR</span><br><span class="line"># Licensed to the Apache Software Foundation (ASF) under one</span><br><span class="line"># or more contributor license agreements.  See the NOTICE file</span><br><span class="line"># distributed with this work for additional information</span><br><span class="line"># regarding copyright ownership.  The ASF licenses this file</span><br><span class="line"># to you under the Apache License, Version 2.0 (the</span><br><span class="line"># &quot;License&quot;); you may not use this file except in compliance</span><br><span class="line"># with the License.  You may obtain a copy of the License at</span><br><span class="line">#</span><br><span class="line">#     http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line">#</span><br><span class="line"># Unless required by applicable law or agreed to in writing, software</span><br><span class="line"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line"># See the License for the specific language governing permissions and</span><br><span class="line"># limitations under the License.</span><br></pre></td></tr></table></figure>
+<p>可以删除已存在的该文件，然后再次初始化一次形成新文件。</p>
+<h3 id="2-指定mysql，无法初始化"><a href="#2-指定mysql，无法初始化" class="headerlink" title="2. 指定mysql，无法初始化"></a>2. 指定mysql，无法初始化</h3><p>一般是用户权限问题，以及错误地指定了mysql的连接IP和端口。</p>
+<h3 id="3-Could-not-obtain-block"><a href="#3-Could-not-obtain-block" class="headerlink" title="3. Could not obtain block"></a>3. Could not obtain block</h3><h3 id="4-修改分区字段类型"><a href="#4-修改分区字段类型" class="headerlink" title="4. 修改分区字段类型"></a>4. 修改分区字段类型</h3><p>常见的一个场景是Hive里面一个带分区的表，原来是int类型的字段，后来发现数据超过了int的最大值，要改成bigint。或者是bigint要改string或decimal。无论如何，对于带分区的表，要改列类型，有一个坑：</p>
+<p>如果使用<code>alter table t change column oldcol newcol bigint</code>，即把int类型的oldcol改为bigint类型的newcol</p>
+<p>这个时候，去读数据，应该还是NULL的。</p>
+<p>这是因为每个分区Hive还会存一份元数据，于是两种解决方案：</p>
+<ul>
+<li><p>alter table t change column oldcol newcol bigint cascade;</p>
+</li>
+<li><p>alter table t change column oldcol newcol bigint, alter table t partition(…) change column oldcol newcol bigint;</p>
+</li>
+</ul>
+<p>同时，在修改表字段类型时，会遇到各种限制：<br><img src="static/20160805174521925.png" alt=""></p>
+<p>特别是string转int，hive不让转。如果某个字段一定是int值类型，但是不小心存成了string，这个时候可以先取消hive内置的限制。在hive CLI中执行：<code>set hive.metastore.disallow.incompatible.col.type.changes=false;</code></p>
+<p>执行string to int的sql,例如：将string类型的unix时间戳（createdtime字段）转成int，则<code>alter table fact_jinrong_submit change column createdtime createdtime int cascade;</code></p>
+<p>最后，一定要注意恢复该限制：<code>set hive.metastore.disallow.incompatible.col.type.changes=true;</code></p>
+<h2 id="六-参考资料"><a href="#六-参考资料" class="headerlink" title="六 参考资料"></a>六 参考资料</h2><ul>
+<li><a href="http://www.cnblogs.com/sharpxiajun/archive/2013/06/02/3114180.html" target="_blank" rel="noopener">大数据时代的技术hive：hive介绍</a></li>
+<li><a href="http://blog.csdn.net/u012592062/article/details/53022447" target="_blank" rel="noopener">CentOS6.5安装hive-2.1.0</a></li>
+<li><a href="http://blog.csdn.net/u011812294/article/details/53610210" target="_blank" rel="noopener">Hive官方文档翻译——Hive Tutorial（上）（Hive 入门指导）</a></li>
+<li><a href="http://xianglp.iteye.com/blog/2338124" target="_blank" rel="noopener">Hive学习系列(一)什么是Hive及Hive的架构</a></li>
+<li><a href="http://xianglp.iteye.com/blog/2338806" target="_blank" rel="noopener">Hive学习系列(二)Hive的查询流程详解</a></li>
+<li><a href="https://www.iteblog.com/archives/949" target="_blank" rel="noopener">Hive几种数据导入方式</a></li>
+<li><a href="https://www.iteblog.com/archives/866" target="_blank" rel="noopener">Hive的数据存储模式</a></li>
+<li><a href="https://www.iteblog.com/archives/892.html" target="_blank" rel="noopener">Hive数据类型转换</a></li>
+<li><a href="https://www.iteblog.com/archives/957.html" target="_blank" rel="noopener">Hive的几种内置服务</a></li>
+<li><a href="http://www.cnblogs.com/zlslch/p/6105571.html" target="_blank" rel="noopener">Hadoop Hive概念学习系列之hive里的扩展接口（CLI、Beeline、JDBC）</a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://guzhenping.com/2018/01/16/大数据开发学习（Hive）/" title="" target="_blank" rel="external">http://guzhenping.com/2018/01/16/大数据开发学习（Hive）/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/guzhenping" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/guzhenping" target="_blank"><span class="text-dark">谷震平</span><small class="ml-1x">大数据，区块链，全沾</small></a></h3>
+        <div>工作两年多，在大数据和数仓领域搞过前后端系统开发，SQL建模和数据可视化。个人比较喜欢折腾，对新技术都很感兴趣；热衷开源项目，是区块链项目EKT的contributor。比较喜欢要求复合能力的岗位。个人blog：http://guzhenping.com。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom="">
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/01/17/大数据开发学习（HBase）/" title="(no title)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/01/11/数据仓库学习（维度建模）/" title="(no title)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipaying.png" alt="Scan Qrcode" title="Scan">
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan">
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope="" itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/guzhenping" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>

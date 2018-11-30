@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang=ZH>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>大数据开发学习（Kylin） | Hexo</title>
+  <meta name="description" content="一 Kylin介绍kylin是一款OLAP工具，背靠Hadoop，HBase，Spark，Kafka等大山，提供神奇体验。">
+<meta name="keywords" content="大数据开发,OLAP,Kylin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大数据开发学习（Kylin）">
+<meta property="og:url" content="http://guzhenping.com/2018/01/24/大数据开发学习（Kylin）/index.html">
+<meta property="og:site_name" content="谷震平的博客">
+<meta property="og:description" content="一 Kylin介绍kylin是一款OLAP工具，背靠Hadoop，HBase，Spark，Kafka等大山，提供神奇体验。">
+<meta property="og:locale" content="ZH">
+<meta property="og:image" content="http://guzhenping.com/2018/01/24/大数据开发学习（Kylin）/static/kylin建模2.png">
+<meta property="og:image" content="http://guzhenping.com/2018/01/24/大数据开发学习（Kylin）/static/kylin建模.png">
+<meta property="og:updated_time" content="2018-11-30T02:55:33.282Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大数据开发学习（Kylin）">
+<meta name="twitter:description" content="一 Kylin介绍kylin是一款OLAP工具，背靠Hadoop，HBase，Spark，Kafka等大山，提供神奇体验。">
+<meta name="twitter:image" content="http://guzhenping.com/2018/01/24/大数据开发学习（Kylin）/static/kylin建模2.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://guzhenping.com/2018/01/24/大数据开发学习（Kylin）/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="谷震平的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/guzhenping" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">谷震平</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">大数据，区块链，全沾</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech="">
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="https://github.com/guzhenping">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/guzhenping" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope="" itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/">大数据</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/可视化/">可视化</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Clickhouse/">Clickhouse</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flink/">Flink</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/">Hadoop</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kudu/">Kudu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kylin/">Kylin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OLAP/">OLAP</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redash/">Redash</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端开发/">前端开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大数据开发/">大数据开发</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实时流/">实时流</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据仓库/">数据仓库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集群运维/">集群运维</a><span class="tag-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Clickhouse/" style="font-size: 13.25px;">Clickhouse</a> <a href="/tags/Flink/" style="font-size: 13px;">Flink</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Kudu/" style="font-size: 13px;">Kudu</a> <a href="/tags/Kylin/" style="font-size: 13.25px;">Kylin</a> <a href="/tags/OLAP/" style="font-size: 13.75px;">OLAP</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/Redash/" style="font-size: 13.5px;">Redash</a> <a href="/tags/Redis/" style="font-size: 13px;">Redis</a> <a href="/tags/前端开发/" style="font-size: 13px;">前端开发</a> <a href="/tags/大数据开发/" style="font-size: 13.75px;">大数据开发</a> <a href="/tags/实时流/" style="font-size: 13px;">实时流</a> <a href="/tags/数据仓库/" style="font-size: 13px;">数据仓库</a> <a href="/tags/集群运维/" style="font-size: 14px;">集群运维</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/29/前端开发学习笔记（一）/" class="title">前端开发学习笔记（一）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-29T09:04:48.000Z" itemprop="datePublished">2018-11-29</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/06/数据库学习（Postgre）/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-05T16:00:00.000Z" itemprop="datePublished">2018-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/大数据/">大数据</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/02/大数据开发学习（Redash）/" class="title">Redash开发指南</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-02T09:04:48.000Z" itemprop="datePublished">2018-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/大数据/">大数据</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/02/大数据开发学习（Redis）/" class="title">大数据开发学习（Redis）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-02T09:04:48.000Z" itemprop="datePublished">2018-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/11/02/Redash Redis队列运维/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-11-01T16:00:00.000Z" itemprop="datePublished">2018-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-大数据开发学习（Kylin）" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      大数据开发学习（Kylin）
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/01/24/大数据开发学习（Kylin）/" class="article-date">
+	  <time datetime="2018-01-24T09:04:48.000Z" itemprop="datePublished">2018-01-24</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/大数据/">大数据</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Kylin/">Kylin</a>, <a class="article-tag-link" href="/tags/OLAP/">OLAP</a>, <a class="article-tag-link" href="/tags/大数据开发/">大数据开发</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/01/24/大数据开发学习（Kylin）/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="一-Kylin介绍"><a href="#一-Kylin介绍" class="headerlink" title="一 Kylin介绍"></a>一 Kylin介绍</h2><p>kylin是一款OLAP工具，背靠Hadoop，HBase，Spark，Kafka等大山，提供神奇体验。</p>
+<a id="more"></a>
+<h2 id="Kylin-安装与启动"><a href="#Kylin-安装与启动" class="headerlink" title="Kylin 安装与启动"></a>Kylin 安装与启动</h2><p>除了常规环境，还需要hadoop的historyjobserver启动。</p>
+<p>具体参见官网，启动较为容易。</p>
+<h2 id="度量计算"><a href="#度量计算" class="headerlink" title="度量计算"></a>度量计算</h2><p>目前提供9种计算方法。</p>
+<ol>
+<li><p>sum</p>
+</li>
+<li><p>min </p>
+</li>
+</ol>
+<ul>
+<li>max</li>
+<li>count</li>
+<li>count_distinct</li>
+<li>top_n</li>
+<li>raw</li>
+<li>extended_column</li>
+<li>percentile</li>
+</ul>
+<h2 id="建模心得"><a href="#建模心得" class="headerlink" title="建模心得"></a>建模心得</h2><p>在通过星形模型建立事实表+维度表的过程中，操作比较复杂。但是，通过view的方式，就比较简单。</p>
+<p>view建模的方式，所有结果都在一张表里，只需要对该表进行维度和度量的划分即可。</p>
+<h3 id="建模结果"><a href="#建模结果" class="headerlink" title="建模结果"></a>建模结果</h3><p>测试结果1：</p>
+<p><img src="static/kylin建模2.png" alt=""></p>
+<p>测试结果2：<br><img src="static/kylin建模.png" alt=""></p>
+<h2 id="实际问题"><a href="#实际问题" class="headerlink" title="实际问题"></a>实际问题</h2><p>问题1：在同一个project里的Insight，可以看到所用cube的维度，但是不能共用，会报：No model found for rel</p>
+<p>问题2：kylin不支持复杂的列，比如map,array类型。问题参见：<br><a href="https://mail-archives.apache.org/mod_mbox/kylin-dev/201512.mbox/%3C565D565C.3060205@jd.com%3E" target="_blank" rel="noopener">https://mail-archives.apache.org/mod_mbox/kylin-dev/201512.mbox/%3C565D565C.3060205@jd.com%3E</a></p>
+<p>解决方法：创建该表的视图，剔除复杂列</p>
+<p>问题3：kylin建model时，想做增量构建，在指定某列时间作为partition时，该列内容应该满足‘yyyy-MM-dd HH:mm:ss’的样子，不要使用unix_timestamp的类型。否则，构建后cube大小为零。 </p>
+<p>问题4：kylin建cube所用的字段最好不要采用kylin 关键字，例如:year, month, day, hour等。否则写SQL时，不太友好。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">想查一段 简单的pv和uv SQL，</span><br><span class="line">select platform, year, month, day ,count(*) as pv count(distinct guid) as uv from kylin_tracking_view group by platform, year, month, day </span><br><span class="line"></span><br><span class="line">在Kylin的查询界面中，应当这么写:</span><br><span class="line">select platform,</span><br><span class="line">    &quot;YEAR&quot;,</span><br><span class="line">    &quot;MONTH&quot;,</span><br><span class="line">    &quot;DAY&quot;,</span><br><span class="line">    count(*) as pv,</span><br><span class="line">    count(distinct guid) as uv</span><br><span class="line">from kylin_tracking_view </span><br><span class="line">group by </span><br><span class="line">platform,</span><br><span class="line">    &quot;YEAR&quot;,</span><br><span class="line">    &quot;MONTH&quot;,</span><br><span class="line">    &quot;DAY&quot;</span><br><span class="line"></span><br><span class="line">可以看出，关键词必须全部大写，且被双引号(必须是双引号，单引是自定义常量)包住。</span><br><span class="line"></span><br><span class="line">建议提前规范好数据源，免得造成巨大的返工。</span><br></pre></td></tr></table></figure>
+<p>问题5：build维度过不去<br>具体报错： [BadQueryDetector] service.BadQueryDetector:160 : System free memory less than 100 MB. 0 queries running</p>
+<p>暂无解决办法。</p>
+<p>这个问题可能是，kylin维度较多，把regionserver搞成僵死，进而导致的。</p>
+<p>问题6： kylin 不支持中文列名。kylin在创建中间表时，会使用中文+英文的方式做拼接，这个过程会报错。</p>
+<p>问题7：kylin 2.2.0 版本用户相关比较难搞。默认账户 ADMIN有问题，暂无好的解决办法。<br>一种解决方式：升级到 2.3.0版本，修复了230个bug，对用户更加友好。</p>
+<p>问题8：kylin 2.3以后采用spark 2.1.2版本，需要进行相关的配置。<br>解决方式：<a href="https://kylin.apache.org/docs23/tutorial/cube_spark.html" target="_blank" rel="noopener">https://kylin.apache.org/docs23/tutorial/cube_spark.html</a></p>
+<h2 id="Kylin的一些问题"><a href="#Kylin的一些问题" class="headerlink" title="Kylin的一些问题"></a>Kylin的一些问题</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><p>关于Kylin的架构和原理，有图可供参考：<a href="http://blog.csdn.net/lvguichen88/article/details/53054745" target="_blank" rel="noopener">Kylin 的架构和原理</a></p>
+<p>Kylin比较详细的介绍：<a href="http://tech.meiyou.com/?p=97" target="_blank" rel="noopener">Kylin对大数据量的多维分析</a></p>
+<p>关于Kylin Cube构建原理，落地到HBase的过程: <a href="https://blog.bcmeng.com/post/kylin-cube.html" target="_blank" rel="noopener">Apache Kylin Cube 构建原理</a></p>
+<p>关于Kylin SQL 语法：<a href="http://calcite.apache.org/docs/reference.html" target="_blank" rel="noopener">SQL language</a></p>
+<p>关于Kylin的关键字：<br><a href="https://github.com/apache/kylin/blob/4d50b26972bb7bbaff852172990e0f189f987673/core-metadata/src/main/java/org/apache/kylin/source/adhocquery/HivePushDownConverter.java" target="_blank" rel="noopener">关键字源码</a></p>
+<p>关于一次正常查询的运行原理：<a href="https://zhuanlan.zhihu.com/p/30613434" target="_blank" rel="noopener">Kylin进阶之路</a></p>
+<p>Kylin使用calcite做sql解析，可以参考calcite的语法文档：<a href="https://calcite.apache.org/" target="_blank" rel="noopener">https://calcite.apache.org/</a></p>
+<h3 id="维度问题"><a href="#维度问题" class="headerlink" title="维度问题"></a>维度问题</h3><p>关于维度的聚合组中各个含义，请参考<br><a href="https://kylin.apache.org/blog/2016/02/18/new-aggregation-group/" target="_blank" rel="noopener">https://kylin.apache.org/blog/2016/02/18/new-aggregation-group/</a></p>
+<p>Kylin Mandatory Dimension(必要维度)：<a href="https://mp.weixin.qq.com/s?__biz=MzAwODE3ODU5MA==&amp;mid=2653077943&amp;idx=1&amp;sn=007d2ba345d0e25ec12807aa47f9913d&amp;chksm=80a4bf46b7d33650465d33e20dac7edc09a7ad9308d77de6a501685c8ae00cba661c1d612074&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">【技术帖】Apache Kylin高级设置： 必要维度 （Mandatory Dimension）原理解析</a></p>
+<p>Kylin Hierarchy Dimension(层级维度)：<a href="https://mp.weixin.qq.com/s?__biz=MzAwODE3ODU5MA==&amp;mid=2653077929&amp;idx=1&amp;sn=c76ed1fbb745945a077d9ca99f159a4d&amp;chksm=80a4bf58b7d3364e0346ad9c433d4e32c57d45f41b361ae653c64c7fcebab21238793d2f66cb&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">【技术帖】Apache Kylin 高级设置：层级维度（Hierarchy Dimension）原理解析</a></p>
+<p>Kylin Joint Dimension(联合维度)：<a href="https://mp.weixin.qq.com/s?__biz=MzAwODE3ODU5MA==&amp;mid=2653077926&amp;idx=1&amp;sn=a0037628bd102ec8e607d67204cbfa7c&amp;chksm=80a4bf57b7d336419896c9e801a51f08ead2f7727d0d0ec0f9e3b7799ae3c302ebea54f93cc0&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">【技术帖】Apache Kylin 高级设置：联合维度（Joint Dimension）原理解析
+</a></p>
+<p>Kylin Aggregation Group(聚合组)：<a href="https://mp.weixin.qq.com/s?__biz=MzAwODE3ODU5MA==&amp;mid=2653077921&amp;idx=1&amp;sn=89ae88bc63e71098166b74df7106c7bf&amp;chksm=80a4bf50b7d3364692903aac3e901d09a516a8ff635e690e1e22b1d96abb4b2925c98cdace82&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">【技术帖】Apache Kylin 高级设置：聚合组（Aggregation Group）原理解析</a></p>
+<h3 id="Server端"><a href="#Server端" class="headerlink" title="Server端"></a>Server端</h3><p>配置负载均衡：<a href="https://mp.weixin.qq.com/s?__biz=MzAwODE3ODU5MA==&amp;mid=2653077900&amp;idx=1&amp;sn=5bcadd8e5bf1f65c7226344b2f05320e&amp;chksm=80a4bf7db7d3366ba1901296110d51fccd0f41957003d90771db2c238161c41ee5ec555dc334&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">【技术贴】如何部署Apache Kylin集群实现负载均衡？</a></p>
+<h3 id="进阶优化"><a href="#进阶优化" class="headerlink" title="进阶优化"></a>进阶优化</h3><p>Kylin cube算法：<a href="http://www.infoq.com/cn/articles/apache-kylin-algorithm" target="_blank" rel="noopener">Apache Kylin的快速数据立方体算法——概述
+</a></p>
+<p>Kylin cube介绍：<a href="http://blog.csdn.net/yu616568/article/details/50570536" target="_blank" rel="noopener">Kylin使用之创建Cube和高级设置</a></p>
+<p>别人的Cube优化案例：<a href="http://www.jianshu.com/p/1e82e5dddae2" target="_blank" rel="noopener">Apache Kylin cube优化指南</a></p>
+<p>优化案例：<a href="https://zhuanlan.zhihu.com/p/29084008" target="_blank" rel="noopener">Apache Kylin 深入Cube和查询优化 提升Cube</a></p>
+<h3 id="API开发"><a href="#API开发" class="headerlink" title="API开发"></a>API开发</h3><p>脚本触发增量更新：<a href="http://blog.csdn.net/aaronhadoop/article/details/52806486" target="_blank" rel="noopener">Kylin定时增量build</a></p>
+<p>Kylin+superset 可视化方案案例：<a href="http://zhuanlan.zhihu.com/p/26628057" target="_blank" rel="noopener">Kylin初体验总结</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>很不错的博文：</p>
+<ul>
+<li><a href="http://www.jianshu.com/p/6eadb77d091c" target="_blank" rel="noopener">Apache Kylin 框架介绍</a></li>
+<li><a href="http://www.infoq.com/cn/articles/kylin-apache-in-meituan-olap-scenarios-practice" target="_blank" rel="noopener">Apache Kylin在美团数十亿数据OLAP场景下的实践</a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://guzhenping.com/2018/01/24/大数据开发学习（Kylin）/" title="大数据开发学习（Kylin）" target="_blank" rel="external">http://guzhenping.com/2018/01/24/大数据开发学习（Kylin）/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/guzhenping" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/guzhenping" target="_blank"><span class="text-dark">谷震平</span><small class="ml-1x">大数据，区块链，全沾</small></a></h3>
+        <div>工作两年多，在大数据和数仓领域搞过前后端系统开发，SQL建模和数据可视化。个人比较喜欢折腾，对新技术都很感兴趣；热衷开源项目，是区块链项目EKT的contributor。比较喜欢要求复合能力的岗位。个人blog：http://guzhenping.com。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom="">
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/03/23/大数据开发学习（Spark）/" title="(no title)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/01/17/大数据开发学习（HBase）/" title="(no title)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipaying.png" alt="Scan Qrcode" title="Scan">
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan">
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope="" itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/guzhenping" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>
