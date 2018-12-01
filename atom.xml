@@ -201,28 +201,6 @@
   </entry>
   
   <entry>
-    <title>数据仓库学习（概念篇）</title>
-    <link href="http://guzhenping.com/2018/05/24/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%AD%A6%E4%B9%A0--%E6%A6%82%E5%BF%B5%E7%AF%87/"/>
-    <id>http://guzhenping.com/2018/05/24/数据仓库学习--概念篇/</id>
-    <published>2018-05-24T09:04:48.000Z</published>
-    <updated>2018-11-30T02:53:03.735Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>写点数据仓库（DW）的一些常用知识,架构等方面。加深基本功，保持进阶的心。</p><a id="more"></a><h2 id="典型架构"><a href="#典型架构" class="headerlink" title="典型架构"></a>典型架构</h2><p><img src="static/ScreenShot2017-01-13at11.09.58.png" alt="数据仓库系统架构"></p><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul><li>数据仓库</li></ul><blockquote><p>数据仓库是一个面向主题的、集成的、非易失的（nonvolatile）、随时间变化的（time-variant）用来支持管理人员决策的数据集合。</p></blockquote><blockquote><p>—-William H.Inmon</p></blockquote><p>以上也是数据仓库区别于业务系统的4个特征。</p><ul><li>OLAP</li></ul><p>联机分析处理（On-line Analytical Processing），该概念由数据库创始人E. F. Codd于1993年提出。OLAP理事会（OLAP Council）进一步完善：OLAP是一种软件技术，它使分析人员、经理和执行官能够迅速、一致、交互的从各方面观察信息，以达到深入理解数据的目的。</p><ul><li>OLTP</li></ul><p>联机事务处理（On-line Transaction Processing）</p><ul><li>ODS </li></ul><p>操作数据存储（Operational Data Store, 简称ODS）。在数据仓库系统中，ODS存储了原始数据经过集成统一后的数据。</p><ul><li>DW</li></ul><p>数据仓库（Data Warehouse，简称DW）。在数据仓库系统中，DW数据库存储了整个企业的所有历史数据，是狭义上的数据仓库。DW数据库需要满足企业数据分析的各种需求，以及各个部门建设数据集市的需求，通常存储企业的基础数据和通用数据。</p><ul><li>数据集市(Data Market)</li></ul><p>数据集市是指针对特定部门和主题的小型数据仓库，数据从DW中获取。</p><ul><li>ETL</li></ul><p>ETL（Extract，Transform，Load）表示抽取、转换和装载，数据从多个同构或异构的数据源抽取出来，经过自定义的转换操作，最终装载进入目标表的过程叫做一次ETL。ETL是数据进入ODS、DW、Data Market的主要方式。</p><h2 id="建模方法"><a href="#建模方法" class="headerlink" title="建模方法"></a>建模方法</h2><ul><li>维度建模法（Dimensional Modeling）</li></ul><p>Ralph Kimball主张，</p><ul><li>实体-关系建模（Entity-Relationship Medeling）</li></ul><p>实体-关系建模也叫做第三范式建模（Third Normal Form, 3NF）,是William H.Inmon主张的一种数据仓库建模方法。</p><h2 id="数据与建模"><a href="#数据与建模" class="headerlink" title="数据与建模"></a>数据与建模</h2><p><a href="https://www.zhihu.com/question/19955124" target="_blank" rel="noopener">OLAP中roll-up和drill-down和slicing？</a></p><p><img src="static/olap.jpg" alt=""><br>真正好的建模，应该契合这些功能转换。见过Tableau做的很好，但不算是OLAP系统自带的功能。</p><h2 id="数仓进化史"><a href="#数仓进化史" class="headerlink" title="数仓进化史"></a>数仓进化史</h2><p>比较推荐这篇文章：<a href="http://lxw1234.com/archives/2016/03/624.htm" target="_blank" rel="noopener">从数据仓库到大数据，数据平台这25年是怎样进化的？</a></p><p>在架构方面，偏理论一点的文章：<a href="http://www.clickhouse.com.cn/topic/5ae13a599d28dfde2ddc5fc5#5aea82689d28dfde2ddc6014" target="_blank" rel="noopener">大数据分析的下一代架构–IOTA</a></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://segmentfault.com/a/1190000002672666" target="_blank" rel="noopener">hadoop HDFS常用文件操作命令</a></li><li><a href="http://book.51cto.com/art/201409/452359.htm" target="_blank" rel="noopener">HDFS 文件操作命令</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;写点数据仓库（DW）的一些常用知识,架构等方面。加深基本功，保持进阶的心。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="大数据" scheme="http://guzhenping.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    
-      <category term="数据仓库" scheme="http://guzhenping.com/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
     <title>大数据开发学习（Clickhouse）</title>
     <link href="http://guzhenping.com/2018/05/24/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0--Clickhouse/"/>
     <id>http://guzhenping.com/2018/05/24/大数据开发学习--Clickhouse/</id>
@@ -244,6 +222,28 @@
       <category term="OLAP" scheme="http://guzhenping.com/tags/OLAP/"/>
     
       <category term="Clickhouse" scheme="http://guzhenping.com/tags/Clickhouse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据仓库学习（概念篇）</title>
+    <link href="http://guzhenping.com/2018/05/24/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%AD%A6%E4%B9%A0--%E6%A6%82%E5%BF%B5%E7%AF%87/"/>
+    <id>http://guzhenping.com/2018/05/24/数据仓库学习--概念篇/</id>
+    <published>2018-05-24T09:04:48.000Z</published>
+    <updated>2018-11-30T02:53:03.735Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>写点数据仓库（DW）的一些常用知识,架构等方面。加深基本功，保持进阶的心。</p><a id="more"></a><h2 id="典型架构"><a href="#典型架构" class="headerlink" title="典型架构"></a>典型架构</h2><p><img src="static/ScreenShot2017-01-13at11.09.58.png" alt="数据仓库系统架构"></p><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul><li>数据仓库</li></ul><blockquote><p>数据仓库是一个面向主题的、集成的、非易失的（nonvolatile）、随时间变化的（time-variant）用来支持管理人员决策的数据集合。</p></blockquote><blockquote><p>—-William H.Inmon</p></blockquote><p>以上也是数据仓库区别于业务系统的4个特征。</p><ul><li>OLAP</li></ul><p>联机分析处理（On-line Analytical Processing），该概念由数据库创始人E. F. Codd于1993年提出。OLAP理事会（OLAP Council）进一步完善：OLAP是一种软件技术，它使分析人员、经理和执行官能够迅速、一致、交互的从各方面观察信息，以达到深入理解数据的目的。</p><ul><li>OLTP</li></ul><p>联机事务处理（On-line Transaction Processing）</p><ul><li>ODS </li></ul><p>操作数据存储（Operational Data Store, 简称ODS）。在数据仓库系统中，ODS存储了原始数据经过集成统一后的数据。</p><ul><li>DW</li></ul><p>数据仓库（Data Warehouse，简称DW）。在数据仓库系统中，DW数据库存储了整个企业的所有历史数据，是狭义上的数据仓库。DW数据库需要满足企业数据分析的各种需求，以及各个部门建设数据集市的需求，通常存储企业的基础数据和通用数据。</p><ul><li>数据集市(Data Market)</li></ul><p>数据集市是指针对特定部门和主题的小型数据仓库，数据从DW中获取。</p><ul><li>ETL</li></ul><p>ETL（Extract，Transform，Load）表示抽取、转换和装载，数据从多个同构或异构的数据源抽取出来，经过自定义的转换操作，最终装载进入目标表的过程叫做一次ETL。ETL是数据进入ODS、DW、Data Market的主要方式。</p><h2 id="建模方法"><a href="#建模方法" class="headerlink" title="建模方法"></a>建模方法</h2><ul><li>维度建模法（Dimensional Modeling）</li></ul><p>Ralph Kimball主张，</p><ul><li>实体-关系建模（Entity-Relationship Medeling）</li></ul><p>实体-关系建模也叫做第三范式建模（Third Normal Form, 3NF）,是William H.Inmon主张的一种数据仓库建模方法。</p><h2 id="数据与建模"><a href="#数据与建模" class="headerlink" title="数据与建模"></a>数据与建模</h2><p><a href="https://www.zhihu.com/question/19955124" target="_blank" rel="noopener">OLAP中roll-up和drill-down和slicing？</a></p><p><img src="static/olap.jpg" alt=""><br>真正好的建模，应该契合这些功能转换。见过Tableau做的很好，但不算是OLAP系统自带的功能。</p><h2 id="数仓进化史"><a href="#数仓进化史" class="headerlink" title="数仓进化史"></a>数仓进化史</h2><p>比较推荐这篇文章：<a href="http://lxw1234.com/archives/2016/03/624.htm" target="_blank" rel="noopener">从数据仓库到大数据，数据平台这25年是怎样进化的？</a></p><p>在架构方面，偏理论一点的文章：<a href="http://www.clickhouse.com.cn/topic/5ae13a599d28dfde2ddc5fc5#5aea82689d28dfde2ddc6014" target="_blank" rel="noopener">大数据分析的下一代架构–IOTA</a></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://segmentfault.com/a/1190000002672666" target="_blank" rel="noopener">hadoop HDFS常用文件操作命令</a></li><li><a href="http://book.51cto.com/art/201409/452359.htm" target="_blank" rel="noopener">HDFS 文件操作命令</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;写点数据仓库（DW）的一些常用知识,架构等方面。加深基本功，保持进阶的心。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://guzhenping.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="数据仓库" scheme="http://guzhenping.com/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/"/>
     
   </entry>
   
