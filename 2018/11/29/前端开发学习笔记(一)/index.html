@@ -27,7 +27,7 @@
 <meta property="og:description" content="前言在做一个叫计算平台的项目，主要是将机器学习、深度学习和大数据结合在一起，对标该领域中，阿里的计算平台、第四范式的先知平台等知名项目。目前，我们实现了基于Spark的可视化ETL功能，还有很多事情要做。 在这个项目中，用到了Vue.js的技术栈。为了加快项目进度，笔者还是在全沾的道路上越走越远，所以特地记录一路上的问题。">
 <meta property="og:locale" content="ZH">
 <meta property="og:image" content="http://guzhenping.com/2018/11/29/前端开发学习笔记(一)/static/vue项目简易.png">
-<meta property="og:updated_time" content="2018-12-14T03:20:33.309Z">
+<meta property="og:updated_time" content="2018-12-14T03:42:51.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端开发学习笔记(一)">
 <meta name="twitter:description" content="前言在做一个叫计算平台的项目，主要是将机器学习、深度学习和大数据结合在一起，对标该领域中，阿里的计算平台、第四范式的先知平台等知名项目。目前，我们实现了基于Spark的可视化ETL功能，还有很多事情要做。 在这个项目中，用到了Vue.js的技术栈。为了加快项目进度，笔者还是在全沾的道路上越走越远，所以特地记录一路上的问题。">
@@ -334,8 +334,8 @@
 <a id="more"></a>
 <h2 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h2><p>入门Vue.js不算特别难，一定要多看几遍官方文档！一个完整的初级Demo大致涨这样：</p>
 <p><img src="static/vue项目简易.png" alt=""></p>
-<p>项目Demo地址:(hello-vue)[<a href="https://github.com/guzhenping/hello-vue]" target="_blank" rel="noopener">https://github.com/guzhenping/hello-vue]</a></p>
-<p>初学时，搞不清(单文件组件)[<a href="https://cn.vuejs.org/v2/guide/single-file-components.html]。没人带，就直接想用高级的姿势，是可怕的。既然初学，还是得一步一步来.." target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/single-file-components.html]。没人带，就直接想用高级的姿势，是可怕的。既然初学，还是得一步一步来..</a>.</p>
+<p>项目Demo地址: <a href="https://github.com/guzhenping/hello-vue" target="_blank" rel="noopener">hello-vue</a></p>
+<p>初学时，搞不清<a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="noopener">单文件组件</a>。没人带，就直接想用高级的姿势，是可怕的。既然初学，还是得一步一步来…</p>
 <h2 id="前后端通讯：unicode-string"><a href="#前后端通讯：unicode-string" class="headerlink" title="前后端通讯：unicode/string"></a>前后端通讯：unicode/string</h2><p>Case: 前端通过JSON将string数据转发的Python后端，结果该类型变成了Unicode类型。废掉了如下代码：</p>
 <pre><code>if isinstance(data, str):
     do somethings....
