@@ -28,7 +28,7 @@
 <meta property="og:locale" content="ZH">
 <meta property="og:image" content="http://guzhenping.com/2018/05/24/数据仓库学习--概念篇/static/ScreenShot2017-01-13at11.09.58.png">
 <meta property="og:image" content="http://guzhenping.com/2018/05/24/数据仓库学习--概念篇/static/olap.jpg">
-<meta property="og:updated_time" content="2018-11-30T02:53:03.735Z">
+<meta property="og:updated_time" content="2018-12-18T03:03:06.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据仓库学习（概念篇）">
 <meta name="twitter:description" content="前言写点数据仓库（DW）的一些常用知识,架构等方面。加深基本功，保持进阶的心。">
@@ -316,11 +316,18 @@
 
 
         
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
 
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/05/24/数据仓库学习--概念篇/#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 638(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 818(words)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 2(minutes)</span>
@@ -370,11 +377,18 @@
 <h2 id="建模方法"><a href="#建模方法" class="headerlink" title="建模方法"></a>建模方法</h2><ul>
 <li>维度建模法（Dimensional Modeling）</li>
 </ul>
-<p>Ralph Kimball主张，</p>
+<p>Ralph Kimball主张。</p>
+<blockquote>
+<p>维度建模以分析决策的需求为出发点构建模型，一般有较好的大规模复杂查询的响应性能，更直接面向业务，典型的代表是我们比较熟知的星形模型，以及在一些特殊场景下适用的雪花模型。</p>
+</blockquote>
 <ul>
 <li>实体-关系建模（Entity-Relationship Medeling）</li>
 </ul>
 <p>实体-关系建模也叫做第三范式建模（Third Normal Form, 3NF）,是William H.Inmon主张的一种数据仓库建模方法。</p>
+<blockquote>
+<p>用实体加关系描述的数据模型描述企业业务架构，在范式理论上符合3NF，其是站在企业角度进行面向主题的抽象，而不是针对某个具体业务流程的，它更多是面向数据的整合和一致性治理，正如Inmon所希望达到的“single version of the truth”。</p>
+<p>From: <a href="http://lxw1234.com/archives/2018/01/890.htm" target="_blank" rel="noopener">http://lxw1234.com/archives/2018/01/890.htm</a></p>
+</blockquote>
 <h2 id="数据与建模"><a href="#数据与建模" class="headerlink" title="数据与建模"></a>数据与建模</h2><p><a href="https://www.zhihu.com/question/19955124" target="_blank" rel="noopener">OLAP中roll-up和drill-down和slicing？</a></p>
 <p><img src="static/olap.jpg" alt=""><br>真正好的建模，应该契合这些功能转换。见过Tableau做的很好，但不算是OLAP系统自带的功能。</p>
 <h2 id="数仓进化史"><a href="#数仓进化史" class="headerlink" title="数仓进化史"></a>数仓进化史</h2><p>比较推荐这篇文章：<a href="http://lxw1234.com/archives/2016/03/624.htm" target="_blank" rel="noopener">从数据仓库到大数据，数据平台这25年是怎样进化的？</a></p>
@@ -439,12 +453,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2018/05/24/大数据开发学习--Clickhouse/" title="大数据开发学习（Clickhouse）"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+      <a href="/2018/05/25/大数据开发学习--Kudu/" title="大数据开发学习（Kudu）"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2018/05/21/Redash 权限管理/" title="Redash权限管理"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2018/05/24/大数据开发学习--Clickhouse/" title="大数据开发学习（Clickhouse）"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
@@ -558,6 +572,8 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
    
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
 
 
