@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://guzhenping.com/"/>
-  <updated>2018-12-14T03:42:51.852Z</updated>
+  <updated>2018-12-21T03:27:02.147Z</updated>
   <id>http://guzhenping.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>个人简介</title>
+    <link href="http://guzhenping.com/2018/12/21/README/"/>
+    <id>http://guzhenping.com/2018/12/21/README/</id>
+    <published>2018-12-21T09:04:48.000Z</published>
+    <updated>2018-12-21T03:27:02.147Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h1><hr><p>这里是谷震平个人的博客文章，描述了关于大数据技术的一些实践结果和理论知识。包括，集群搭建、大数据工具学习、运维、学术资料整理。请记住这里：<a href="http://guzhenping.com">http://guzhenping.com</a>。</p><p>笔者作为一名数据仓库工程师，经历过两个数据仓库系统，一大一小。大的让笔者学到了很多，小的是笔者自己从0到1攒的。</p><a id="more"></a><p><img src="static/2017_DW_in_baixing.jpeg" alt="大的"></p><p align="center"><br>图1 基于hadoop的大数仓<br></p><p><img src="static/WechatIMG53.jpeg" alt="小的"></p><p align="center">图2 基于PG 10的小数仓</p><p>正在开启第三段职业生涯。</p><h1 id="文章列表"><a href="#文章列表" class="headerlink" title="文章列表"></a>文章列表</h1><hr><h2 id="集群搭建与运维"><a href="#集群搭建与运维" class="headerlink" title="集群搭建与运维"></a>集群搭建与运维</h2><ul><li>[2016-11 集群搭建指南（上卷）]</li><li>[2016-11 集群搭建指南（中卷）]</li><li>[2016-11 集群搭建指南（下卷）]<ul><li>[2016-12 Hadoop学习指南（集群运维篇）]</li><li>[2017-01 Hadoop学习指南（HA配置）]</li><li>[2017-01 HA升级过程]</li><li>[2017-02 HA成功升级的总结]</li><li>[2017-10 大数据开发学习（Fabric）]</li></ul></li></ul><h2 id="数据仓库"><a href="#数据仓库" class="headerlink" title="数据仓库"></a>数据仓库</h2><ul><li>[2016-07 数据仓库学习（概念篇）]</li><li>[2017-05 数据仓库学习（ETL）]</li><li>[2018-01 数据仓库学习（维度建模）]</li></ul><h2 id="Hadoop生态圈"><a href="#Hadoop生态圈" class="headerlink" title="Hadoop生态圈"></a>Hadoop生态圈</h2><ul><li>[2016-11 Hadoop学习指南（HDFS篇）]</li><li>[2016-11 大数据开发学习（Hive）]</li><li>[2016-11 大数据开发学习（ZooKeeper）]</li><li>[2017-12 Hadoop学习指南（HBase篇）]</li></ul><h2 id="OLAP-数据查询与可视化"><a href="#OLAP-数据查询与可视化" class="headerlink" title="OLAP/数据查询与可视化"></a>OLAP/数据查询与可视化</h2><ul><li>[2017-12 大数据开发学习（Redash）]</li><li>[2018-01 大数据开发学习（Kylin）]</li><li>[2018-01 Redash使用指南]</li><li>[2018-01 Redash权限分配]</li><li>[2018-04 大数据开发学习（Clickhouse）]</li></ul><h2 id="区块链"><a href="#区块链" class="headerlink" title="区块链"></a>区块链</h2><ul><li><a href="https://mp.weixin.qq.com/s/aw-8AmgasB20IwJHpCzxeA" target="_blank" rel="noopener">2018-07 区块链简史</a></li><li><a href="https://mp.weixin.qq.com/s/LNUPRo0fo5Qw02pP4bV2UQ" target="_blank" rel="noopener">2018-07 区块链分类</a></li></ul><p>工作关系，学习到一点区块链的知识。特地开了一个公众号进行写作，欢迎扫码关注：</p><p><img src="static/认知区块链.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;导读&quot;&gt;&lt;a href=&quot;#导读&quot; class=&quot;headerlink&quot; title=&quot;导读&quot;&gt;&lt;/a&gt;导读&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;这里是谷震平个人的博客文章，描述了关于大数据技术的一些实践结果和理论知识。包括，集群搭建、大数据工具学习、运维、学术资料整理。请记住这里：&lt;a href=&quot;http://guzhenping.com&quot;&gt;http://guzhenping.com&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;笔者作为一名数据仓库工程师，经历过两个数据仓库系统，一大一小。大的让笔者学到了很多，小的是笔者自己从0到1攒的。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://guzhenping.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="数据仓库" scheme="http://guzhenping.com/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/"/>
+    
+  </entry>
   
   <entry>
     <title>前端开发学习笔记(一)</title>
@@ -493,31 +517,6 @@
 &lt;li&gt;CentOS 6.5 64位&lt;/li&gt;
 &lt;li&gt;VirtualBox 5.1.10 Mac版&lt;/li&gt;
 &lt;li&gt;本机macOS Sierra 10.12.1 i7 8G内存
-    
-    </summary>
-    
-      <category term="大数据" scheme="http://guzhenping.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    
-      <category term="集群运维" scheme="http://guzhenping.com/tags/%E9%9B%86%E7%BE%A4%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="Hadoop" scheme="http://guzhenping.com/tags/Hadoop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>集群搭建指南（下卷）</title>
-    <link href="http://guzhenping.com/2016/11/09/%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97--%E4%B8%AD%E5%8D%B7/"/>
-    <id>http://guzhenping.com/2016/11/09/集群搭建指南--中卷/</id>
-    <published>2016-11-09T09:04:48.000Z</published>
-    <updated>2018-11-30T02:35:30.864Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文的搭建基于上卷的配置，环境不再一一赘述。网络配置好的5台节点均可相互ping通，对于节点hadoop1(192.168.20.2)可以ping同其余四台hadoop2(192.168.20.3)、hadoop3(192.168.20.4)、hadoop4(192.168.20.5)、hadoop5(192.168.20.6)。其余节点同理。</p><p>本文继续进行集群的搭建—-SSH配置。禁止root账户进行ssh登陆，只允许指定用户进行ssh登陆。</p><a id="more"></a><h2 id="定义用户"><a href="#定义用户" class="headerlink" title="定义用户"></a>定义用户</h2><p>添加用户已经在上卷中提及,仅供参考。这里假设所有节点均有一个账户:deploy，密码:hadoop。</p><p>同时，已在/etc/sudoers文件提高了deploy的权限。</p><h2 id="SSH配置"><a href="#SSH配置" class="headerlink" title="SSH配置"></a>SSH配置</h2><h4 id="修改ssh配置文件"><a href="#修改ssh配置文件" class="headerlink" title="修改ssh配置文件"></a>修改ssh配置文件</h4><p>配置文件是：/etc/ssh/sshd_config。找到相关变量，修改为：</p><ul><li>PermitRootLogin no</li><li>RSAAuthentication yes</li><li>PubkeyAuthentication yes</li><li>AuthorizedKeysFile  .ssh/authorized_keys</li><li>PasswordAuthentication no </li></ul><p>以上配置作用分别是：禁止root用户远程ssh，开启RSA验证，开启公钥验证，设置验证密钥文件在~/.ssh/authorized_keys中，禁止密码登录。</p><p>保存，重启ssh服务生效。重启命令：<code>/etc/init.d/sshd restart</code></p><h4 id="生成公钥私钥"><a href="#生成公钥私钥" class="headerlink" title="生成公钥私钥"></a>生成公钥私钥</h4><p>以deploy登录，进入~目录，输入<br><code>ssh-keygen -t rsa</code>命令，一路回车生成id_rsa（私钥）和id_rsa.pub(公钥)。</p><p>生成的文件在目录：~/.ssh/下。</p><p>在该目录下新建authorized_keys文件，将id_rsa.pub的内容拷贝的该文件中，后续有ssh请求均会来此文件验证内容。</p><p>同时，给相关文件赋予权限：<br><code>chmod 700 ~/.ssh</code><br><code>chmod 600 ~/.ssh/authorized_keys</code></p><p>此时，即可利用私钥id_rsa用deploy账户登陆该机器。</p><h4 id="拷贝各节点的公钥"><a href="#拷贝各节点的公钥" class="headerlink" title="拷贝各节点的公钥"></a>拷贝各节点的公钥</h4><p>在各个节点重复上述过程，修改ssh的配置文件，在deploy账户下生成密钥，赋予文件权限。</p><p>为了让集群的节点能相互ssh登陆，需要讲个节点的公钥全部放置到deploy账户下的~/.ssh/authorized_keys（/home/deploy/.ssh/authorized_keys）文件中。每个节点的authorized_keys应该是相同的。</p><h2 id="配置总结"><a href="#配置总结" class="headerlink" title="配置总结"></a>配置总结</h2><p>SSH是会验证不同用户账户下的~/.ssh/authorized_keys的公钥。在Linux系统中，~是指当前账户所在的目录。因为Linux支持多账户，所以，用不同的账户登录，~就代表不同路径。以deploy账户登录，则~代表：<br>/home/deploy/；以deploy2账户登录，~就代表：/home/deploy2/。</p><p>如果指定某账户能ssh登录，则必须在登录该账户的情况下，在~目录下生成公钥和私钥。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;本文的搭建基于上卷的配置，环境不再一一赘述。网络配置好的5台节点均可相互ping通，对于节点hadoop1(192.168.20.2)可以ping同其余四台hadoop2(192.168.20.3)、hadoop3(192.168.20.4)、hadoop4(192.168.20.5)、hadoop5(192.168.20.6)。其余节点同理。&lt;/p&gt;
-&lt;p&gt;本文继续进行集群的搭建—-SSH配置。禁止root账户进行ssh登陆，只允许指定用户进行ssh登陆。&lt;/p&gt;
     
     </summary>
     
