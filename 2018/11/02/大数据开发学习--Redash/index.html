@@ -18,18 +18,20 @@
   
   
   <title>Redash开发指南 | 谷震平</title>
-  <meta name="description" content="一 Redash介绍Redash是一款融合多数据源的可视化查询工具，用于Ad-hoc查询再好不过。除了官方支持的数据源，还可以通过复用代码开发支持Kylin、Clickhouse、TiDB、Palo、Druid等。">
+  <meta name="description" content="一 Redash介绍Redash是一款融合多数据源的可视化查询工具，用于Ad-hoc查询再好不过。除了官方支持的数据源，还可以通过复用代码开发支持Kylin、Clickhouse、TiDB、Palo、Druid等。 写给刚刚接触Redash的同学看，大佬请绕路哈。">
 <meta name="keywords" content="Redash">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redash开发指南">
 <meta property="og:url" content="http://guzhenping.com/2018/11/02/大数据开发学习--Redash/index.html">
 <meta property="og:site_name" content="谷震平的博客">
-<meta property="og:description" content="一 Redash介绍Redash是一款融合多数据源的可视化查询工具，用于Ad-hoc查询再好不过。除了官方支持的数据源，还可以通过复用代码开发支持Kylin、Clickhouse、TiDB、Palo、Druid等。">
+<meta property="og:description" content="一 Redash介绍Redash是一款融合多数据源的可视化查询工具，用于Ad-hoc查询再好不过。除了官方支持的数据源，还可以通过复用代码开发支持Kylin、Clickhouse、TiDB、Palo、Druid等。 写给刚刚接触Redash的同学看，大佬请绕路哈。">
 <meta property="og:locale" content="ZH">
-<meta property="og:updated_time" content="2018-11-30T02:48:21.177Z">
+<meta property="og:image" content="http://guzhenping.com/2018/11/02/大数据开发学习--Redash/static/xmq.png">
+<meta property="og:updated_time" content="2019-02-14T02:52:13.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redash开发指南">
-<meta name="twitter:description" content="一 Redash介绍Redash是一款融合多数据源的可视化查询工具，用于Ad-hoc查询再好不过。除了官方支持的数据源，还可以通过复用代码开发支持Kylin、Clickhouse、TiDB、Palo、Druid等。">
+<meta name="twitter:description" content="一 Redash介绍Redash是一款融合多数据源的可视化查询工具，用于Ad-hoc查询再好不过。除了官方支持的数据源，还可以通过复用代码开发支持Kylin、Clickhouse、TiDB、Palo、Druid等。 写给刚刚接触Redash的同学看，大佬请绕路哈。">
+<meta name="twitter:image" content="http://guzhenping.com/2018/11/02/大数据开发学习--Redash/static/xmq.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://guzhenping.com/2018/11/02/大数据开发学习--Redash/index.html">
   
@@ -161,7 +163,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/">大数据</a><span class="category-list-count">21</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/可视化/">可视化</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/">大数据</a><span class="category-list-count">22</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/可视化/">可视化</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -171,7 +173,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/Clickhouse/" style="font-size: 13.25px;">Clickhouse</a> <a href="/tags/Flink/" style="font-size: 13px;">Flink</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Kudu/" style="font-size: 13px;">Kudu</a> <a href="/tags/Kylin/" style="font-size: 13.25px;">Kylin</a> <a href="/tags/OLAP/" style="font-size: 13.75px;">OLAP</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/Redash/" style="font-size: 13.5px;">Redash</a> <a href="/tags/Redis/" style="font-size: 13px;">Redis</a> <a href="/tags/Vue-js/" style="font-size: 13px;">Vue.js</a> <a href="/tags/前端开发/" style="font-size: 13px;">前端开发</a> <a href="/tags/大数据开发/" style="font-size: 13.75px;">大数据开发</a> <a href="/tags/实时流/" style="font-size: 13px;">实时流</a> <a href="/tags/数据仓库/" style="font-size: 13.5px;">数据仓库</a> <a href="/tags/集群运维/" style="font-size: 14px;">集群运维</a>
+      <a href="/tags/Clickhouse/" style="font-size: 13.2px;">Clickhouse</a> <a href="/tags/Flink/" style="font-size: 13px;">Flink</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Kudu/" style="font-size: 13px;">Kudu</a> <a href="/tags/Kylin/" style="font-size: 13.2px;">Kylin</a> <a href="/tags/OLAP/" style="font-size: 13.8px;">OLAP</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/Redash/" style="font-size: 13.6px;">Redash</a> <a href="/tags/Redis/" style="font-size: 13px;">Redis</a> <a href="/tags/Vue-js/" style="font-size: 13px;">Vue.js</a> <a href="/tags/前端开发/" style="font-size: 13px;">前端开发</a> <a href="/tags/大数据开发/" style="font-size: 13.8px;">大数据开发</a> <a href="/tags/实时流/" style="font-size: 13px;">实时流</a> <a href="/tags/数据仓库/" style="font-size: 13.4px;">数据仓库</a> <a href="/tags/集群运维/" style="font-size: 14px;">集群运维</a>
     </div>
   </div>
 
@@ -180,7 +182,7 @@
   <div class="widget">
     <h3 class="widget-title">Archive</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -192,6 +194,21 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/大数据/">大数据</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/02/14/Redash-二次开发入门/" class="title">Redash 二次开发入门</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-02-14T02:36:41.000Z" itemprop="datePublished">2019-02-14</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -248,21 +265,6 @@
               </p>
               <p class="item-date">
                 <time datetime="2018-11-02T09:04:48.000Z" itemprop="datePublished">2018-11-02</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/大数据/">大数据</a>
-              </p>
-              <p class="item-title">
-                <a href="/2018/10/29/大数据开发学习--Flink/" class="title">大数据开发学习（Flink）</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2018-10-29T09:04:48.000Z" itemprop="datePublished">2018-10-29</time>
               </p>
             </div>
           </li>
@@ -324,7 +326,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/11/02/大数据开发学习--Redash/#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 710(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 787(words)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 3(minutes)</span>
@@ -334,7 +336,8 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="一-Redash介绍"><a href="#一-Redash介绍" class="headerlink" title="一 Redash介绍"></a>一 Redash介绍</h2><p>Redash是一款融合多数据源的可视化查询工具，用于Ad-hoc查询再好不过。除了官方支持的数据源，还可以通过复用代码开发支持Kylin、Clickhouse、TiDB、Palo、Druid等。<br><a id="more"></a></p>
+        <h2 id="一-Redash介绍"><a href="#一-Redash介绍" class="headerlink" title="一 Redash介绍"></a>一 Redash介绍</h2><p>Redash是一款融合多数据源的可视化查询工具，用于Ad-hoc查询再好不过。除了官方支持的数据源，还可以通过复用代码开发支持Kylin、Clickhouse、TiDB、Palo、Druid等。</p>
+<p>写给刚刚接触Redash的同学看，大佬请绕路哈。<br><a id="more"></a></p>
 <h2 id="二-测试环境"><a href="#二-测试环境" class="headerlink" title="二 测试环境"></a>二 测试环境</h2><h4 id="官方提供的测试环境启动方式"><a href="#官方提供的测试环境启动方式" class="headerlink" title="官方提供的测试环境启动方式"></a>官方提供的测试环境启动方式</h4><p>redash开发文档 ： <a href="https://redash.io/help-onpremise/" target="_blank" rel="noopener">https://redash.io/help-onpremise/</a></p>
 <h4 id="自主搭建"><a href="#自主搭建" class="headerlink" title="自主搭建"></a>自主搭建</h4><p>安装虚拟环境管理工具anaconda, 创建虚拟环境redash:<code>conda create -n redash python=2.7</code>,激活该环境:<code>source activate redash</code>。</p>
 <p>创建虚拟环境（也可以不创建），激活后。利用pip安装redash所需要的包。</p>
@@ -348,11 +351,12 @@ npm run build    # 编译前端的东西
 <pre><code>bin/run ./manage.py runserver --debugger --reload
 </code></pre><p>启动celery的woker和调度器:</p>
 <pre><code>./bin/run celery worker --app=redash.worker --beat -Qscheduled_queries,queries,celery -c2
-</code></pre><p>也可以分开启动woker和调度器，调度器启动:</p>
+</code></pre><p>介绍下单独启动的方式：分开启动woker和调度器，调度器启动:</p>
 <pre><code>bin/run celery worker --app=redash.worker -c4 -Qscheduled_queries --maxtasksperchild=10 -Ofair
 </code></pre><p>worker启动:</p>
 <pre><code>bin/run celery worker --app=redash.worker --beat -c8 -Qqueries,celery --maxtasksperchild=10 -Ofair
 </code></pre><p><strong>根据机器机器实际情况，调节-c后的参数，用来指定启动多少个进程数量。</strong></p>
+<p>此处就不放PostgreSQL（Redash暂时只支持PG）和redis的环境准备了。搭好基础环境后，修改redash/settings/<strong>init</strong>.py文件的配置。</p>
 <h4 id="启动方式"><a href="#启动方式" class="headerlink" title="启动方式"></a>启动方式</h4><p>除了上面的启动方式，还推荐使用guncoin的启动方式。</p>
 <p>启动服务器：</p>
 <pre><code># 前台启动
@@ -407,10 +411,10 @@ http {
 <pre><code>cd /usr/local/nginx/sbin
 sudo ./nginx
 </code></pre><h2 id="三-Redash-VS-Superset"><a href="#三-Redash-VS-Superset" class="headerlink" title="三 Redash VS Superset"></a>三 Redash VS Superset</h2><p>关于Redash：<a href="https://redash.io/；" target="_blank" rel="noopener">https://redash.io/；</a></p>
-<p>与Superset的区别与联系：<a href="https://www.zhihu.com/question/60369195/answer/258298127。" target="_blank" rel="noopener">https://www.zhihu.com/question/60369195/answer/258298127。</a></p>
-<h2 id="Bug"><a href="#Bug" class="headerlink" title="Bug"></a>Bug</h2><p>hive 读 schema<br>show columns in table , 无法处理中文comment,<br>desc table , 无法处理没有字段的表，</p>
-<p>报错：Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. java.lang.ClassNotFoundException Class org.apache.hive.hcatalog.data.JsonSerDe not found</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
+<p>与Superset的区别与联系：<a href="https://www.zhihu.com/question/60369195/answer/258298127。这个答案里面有对比两边代码的描述，二次开发上，Redash可能更胜一筹。" target="_blank" rel="noopener">https://www.zhihu.com/question/60369195/answer/258298127。这个答案里面有对比两边代码的描述，二次开发上，Redash可能更胜一筹。</a></p>
+<h2 id="四-结语"><a href="#四-结语" class="headerlink" title="四 结语"></a>四 结语</h2><p>关于Redash的环境就写到这，后续继续增加Redash相关的技术文章。如有问题讨论，欢迎来我的小圈子~</p>
+<p><img src="static/xmq.png" alt=""></p>
+
       
     </div>
     <div class="article-footer">
