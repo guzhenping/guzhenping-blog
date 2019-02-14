@@ -18,18 +18,23 @@
   
   
   <title>Redash 二次开发入门 | 谷震平</title>
-  <meta name="description" content="前言在Redash二次开发上做了不少工作，修改bug，定制样式，定制功能，增加数据源等等。聊聊自己的二次开发经验。 懂分享的人，一定会快乐！ 环境准备Redash依赖的外部环境比较多，特别是Python相关的包，大多数时候一次装不成功，需要单独装或者更新安装其他系统依赖库，祝大家一次成功！ 环境准备可以参考另一篇blog，没用全说，其余的自己动动脑筋比较好。 附传送门：Redash开发指南 架构介">
+  <meta name="description" content="前言在Redash二次开发上做了不少工作，修改bug，定制样式，定制功能，增加数据源等等。聊聊自己的二次开发经验。 懂分享的人，一定会快乐！ 环境准备Redash依赖的外部环境比较多，特别是Python相关的包，大多数时候一次装不成功，需要单独装或者更新安装其他系统依赖库，祝大家一次成功！ 环境准备可以参考另一篇blog，没用全说，其余的自己动动脑筋比较好。 附传送门：Redash开发指南 系统架">
 <meta name="keywords" content="Redash">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redash 二次开发入门">
 <meta property="og:url" content="http://guzhenping.com/2019/02/14/Redash-二次开发入门/index.html">
 <meta property="og:site_name" content="谷震平的博客">
-<meta property="og:description" content="前言在Redash二次开发上做了不少工作，修改bug，定制样式，定制功能，增加数据源等等。聊聊自己的二次开发经验。 懂分享的人，一定会快乐！ 环境准备Redash依赖的外部环境比较多，特别是Python相关的包，大多数时候一次装不成功，需要单独装或者更新安装其他系统依赖库，祝大家一次成功！ 环境准备可以参考另一篇blog，没用全说，其余的自己动动脑筋比较好。 附传送门：Redash开发指南 架构介">
+<meta property="og:description" content="前言在Redash二次开发上做了不少工作，修改bug，定制样式，定制功能，增加数据源等等。聊聊自己的二次开发经验。 懂分享的人，一定会快乐！ 环境准备Redash依赖的外部环境比较多，特别是Python相关的包，大多数时候一次装不成功，需要单独装或者更新安装其他系统依赖库，祝大家一次成功！ 环境准备可以参考另一篇blog，没用全说，其余的自己动动脑筋比较好。 附传送门：Redash开发指南 系统架">
 <meta property="og:locale" content="ZH">
-<meta property="og:updated_time" content="2019-02-14T02:57:47.227Z">
+<meta property="og:image" content="http://guzhenping.com/2019/02/14/Redash-二次开发入门/static/redash-architecture.png">
+<meta property="og:image" content="http://guzhenping.com/2019/02/14/Redash-二次开发入门/static/redash-backend.png">
+<meta property="og:image" content="http://guzhenping.com/2019/02/14/Redash-二次开发入门/static/directory.jpg">
+<meta property="og:image" content="http://guzhenping.com/2019/02/14/Redash-二次开发入门/static/xmq.png">
+<meta property="og:updated_time" content="2019-02-14T03:39:02.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redash 二次开发入门">
-<meta name="twitter:description" content="前言在Redash二次开发上做了不少工作，修改bug，定制样式，定制功能，增加数据源等等。聊聊自己的二次开发经验。 懂分享的人，一定会快乐！ 环境准备Redash依赖的外部环境比较多，特别是Python相关的包，大多数时候一次装不成功，需要单独装或者更新安装其他系统依赖库，祝大家一次成功！ 环境准备可以参考另一篇blog，没用全说，其余的自己动动脑筋比较好。 附传送门：Redash开发指南 架构介">
+<meta name="twitter:description" content="前言在Redash二次开发上做了不少工作，修改bug，定制样式，定制功能，增加数据源等等。聊聊自己的二次开发经验。 懂分享的人，一定会快乐！ 环境准备Redash依赖的外部环境比较多，特别是Python相关的包，大多数时候一次装不成功，需要单独装或者更新安装其他系统依赖库，祝大家一次成功！ 环境准备可以参考另一篇blog，没用全说，其余的自己动动脑筋比较好。 附传送门：Redash开发指南 系统架">
+<meta name="twitter:image" content="http://guzhenping.com/2019/02/14/Redash-二次开发入门/static/redash-architecture.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://guzhenping.com/2019/02/14/Redash-二次开发入门/index.html">
   
@@ -324,10 +329,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/02/14/Redash-二次开发入门/#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 154(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 1.2k(words)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 1(minutes)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 5(minutes)</span>
 	
 
       </div>
@@ -338,8 +343,94 @@
 <p><strong>懂分享的人，一定会快乐！</strong></p>
 <h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>Redash依赖的外部环境比较多，特别是Python相关的包，大多数时候一次装不成功，需要单独装或者更新安装其他系统依赖库，祝大家一次成功！</p>
 <p>环境准备可以参考另一篇blog，没用全说，其余的自己动动脑筋比较好。</p>
-<p>附传送门：<a href="">Redash开发指南</a></p>
-<h2 id="架构介绍"><a href="#架构介绍" class="headerlink" title="架构介绍"></a>架构介绍</h2>
+<p>附传送门：<a href="http://guzhenping.com/2018/11/02/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0--Redash/">Redash开发指南</a></p>
+<h2 id="系统架构介绍"><a href="#系统架构介绍" class="headerlink" title="系统架构介绍"></a>系统架构介绍</h2><p>总的来说，Redash分为2部分：前端展示，后端数据库连接查询。在这中间，Redash采用celery进行任务调度，满足大量用户查询。</p>
+<p>接下来会从三个方面进行总结：</p>
+<ul>
+<li>总体结构</li>
+<li>前端逻辑</li>
+<li>后端逻辑</li>
+</ul>
+<h4 id="总体结构"><a href="#总体结构" class="headerlink" title="总体结构"></a>总体结构</h4><p><img src="static/redash-architecture.png" alt=""></p>
+<p>Redash在应用层、前后端均带有自己的核心模块。总而言之，当用户在使用Query、Dashboard、Alert功能时，会由前端提供基础的展示，</p>
+<p>再把用户的请求通过JS和后端的Server层交互。用户所有的请求会放在任务队列中，对于需要查询的任务，则会去找对应的数据查询引擎。</p>
+<h4 id="前端逻辑"><a href="#前端逻辑" class="headerlink" title="前端逻辑"></a>前端逻辑</h4><p>前端主要是控制页面元素和CSS样式，提供可视化组件和基本的功能。所有与后端交互的部分由JS业务逻辑控制，实现数据传输与功能跳转。</p>
+<h4 id="后端逻辑"><a href="#后端逻辑" class="headerlink" title="后端逻辑"></a>后端逻辑</h4><p><img src="static/redash-backend.png" alt=""></p>
+<p>后端的大部分功能依赖Celery进行完成，使用Redis做消息中间件。在任务队列中，大多数任务互相独立，进行数据查询时，worker起到主要作用。</p>
+<p>Redash的一个特色是连接了28种以上的数据源，所以自带的数据查询引擎模块融合了这些数据库（引擎）的Python调用接口，十分丰富。</p>
+<h2 id="代码结构介绍"><a href="#代码结构介绍" class="headerlink" title="代码结构介绍"></a>代码结构介绍</h2><p>Redash的模块化做的非常好，基本上可以通过目录和文件名分析出代码的功能定位。嗯，看过的都说好，改过的都说爽。</p>
+<p><img src="static/directory.jpg" alt=""></p>
+<p>一图其实可以省略很多字。实在不明白，欢迎留言评论，加小密圈哈。</p>
+<h2 id="案例上手"><a href="#案例上手" class="headerlink" title="案例上手"></a>案例上手</h2><p>Redash有一个潜在的性能问题：Hive获取几万张表的schema信息时，促使celery worker任务队列堵塞，资源响应过慢。</p>
+<p>所以，就以这个问题来看看源码修改。</p>
+<p>问题分析：Reash采用desc命令获取hive table schema信息（db名，table列名），每张表执行一次desc，速度过慢。</p>
+<p>解决方案：直接通过hive metadata获取，即，从mysql database中获取schema信息。（不懂hive的metadata为啥用mysql的，可以去查查）</p>
+<p>准备查询mysql的SQL代码：</p>
+<pre><code># 获取DB名
+db_sql = &quot;select name as db from DBS&quot;
+
+# 获取table名
+db_list = [&#39;xx1&#39;, &#39;xx2&#39;]
+for db in db_list:
+    tabel_sql = &quot;select tbl_name as table_name from DBS as db inner join TBLS as tbl on db.db_id = tbl.db_id where db.name = &#39;{}&#39;&quot;.format(db[0])
+
+# 获取column名
+table_list = [&#39;t1&#39;, &#39;t2&#39;]
+for table in table_list:
+    sql = &quot;select * from ( &quot;
+    sql += &quot;select col.column_name, col.type_name as column_type from DBS as db inner join TBLS as tbl on db.db_id = tbl.db_id inner join SDS as sds on tbl.sd_id = sds.sd_id inner join COLUMNS_V2 as col on sds.cd_id = col.cd_id&quot;
+    sql += &quot; where db.name = &#39;{}&#39; and tbl_name = &#39;{}&#39;&quot;.format(db[0], table[0])
+    sql += &quot; union all &quot;
+    sql += &quot;select pt.PKEY_NAME as column_name, pt.PKEY_TYPE as column_type from DBS as db inner join TBLS as tbl on db.db_id = tbl.db_id left join PARTITION_KEYS as pt on tbl.tbl_id = pt.tbl_id&quot;
+    sql += &quot; where db.name = &#39;{}&#39; and tbl_name = &#39;{}&#39;&quot;.format(db[0], table[0])
+    sql += &quot; ) as t where t.column_name is not null&quot;    
+</code></pre><p>前端添加hive数据源连接串的地方，增加mysql配置信息：</p>
+<pre><code># 修改前端配置
+def configuration_schema(cls):
+    return {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;host&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;port&quot;: {
+                &quot;type&quot;: &quot;number&quot;
+            },
+            &quot;database&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;username&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;mysql_host&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+            },
+            &quot;mysql_port&quot;: {
+                &quot;type&quot;: &quot;number&quot;,
+                &quot;default&quot;: 3306
+            },
+            &quot;mysql_database&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;default&quot;: &quot;hive_test&quot;
+            },
+            &quot;mysql_username&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;default&quot;: &quot;root&quot;
+            },
+            &quot;passwd&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;Mysql Password&quot;
+            }
+        },
+        &quot;order&quot;: [&quot;host&quot;, &quot;port&quot;, &quot;database&quot;, &quot;username&quot;, &quot;mysql_host&quot;, &quot;mysql_port&quot;, &quot;mysql_database&quot;, &quot;mysql_username&quot;, &quot;passwd&quot;],
+        &quot;required&quot;: [&quot;host&quot;, &quot;mysql_host&quot;, &quot;mysql_port&quot;, &quot;mysql_database&quot;, &quot;mysql_username&quot;, &quot;passwd&quot;],
+        &#39;secret&#39;: [&#39;passwd&#39;]
+    }
+
+</code></pre><p>修改获取schema信息的处理函数_get_table(self, schema), 将其改为通过配置拿mysql连接串，联系上述SQL逻辑，获取schema信息即可。此处不做演示了。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>以上，算是笔者总结的二次开发入门资料吧。如有问题，欢迎加入小圈子，一起交流！</p>
+<p><img src="static/xmq.png" alt=""></p>
+
       
     </div>
     <div class="article-footer">
