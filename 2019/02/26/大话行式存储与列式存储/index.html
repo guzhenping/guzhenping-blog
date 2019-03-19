@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>Redash权限管理 | 谷震平</title>
-  <meta name="description" content="前言Reash是一个数据查询平台，必定会涉及权限管理。主要由3个概念：组（group）,用户（user）， 数据源（data source）。 group在最上层，一个group对应多个user 和 data source。反之也可行，但不利于权限的管理。 权限功能主要基于组（group）和所属数据源(data source)来控制。一个用户（user）必须属于一个或多个组，当新用户进入时，该用户">
-<meta name="keywords" content="大数据开发,Redash">
+  <title>大话行式存储与列式存储 | 谷震平</title>
+  <meta name="description" content="Apache ORC ORC, Optimized Row Columnar. the smallest, fastest columnar storage for Hadoop workloads 背景：https://orc.apache.org/docs/  特性：  ACID Support Built-in Indexes Complex Types  索引结构：ORC provides">
+<meta name="keywords" content="数据仓库,Hadoop,大数据开发,OLAP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redash权限管理">
-<meta property="og:url" content="http://guzhenping.com/2018/05/21/Redash 权限管理/index.html">
+<meta property="og:title" content="大话行式存储与列式存储">
+<meta property="og:url" content="http://guzhenping.com/2019/02/26/大话行式存储与列式存储/index.html">
 <meta property="og:site_name" content="谷震平的博客">
-<meta property="og:description" content="前言Reash是一个数据查询平台，必定会涉及权限管理。主要由3个概念：组（group）,用户（user）， 数据源（data source）。 group在最上层，一个group对应多个user 和 data source。反之也可行，但不利于权限的管理。 权限功能主要基于组（group）和所属数据源(data source)来控制。一个用户（user）必须属于一个或多个组，当新用户进入时，该用户">
+<meta property="og:description" content="Apache ORC ORC, Optimized Row Columnar. the smallest, fastest columnar storage for Hadoop workloads 背景：https://orc.apache.org/docs/  特性：  ACID Support Built-in Indexes Complex Types  索引结构：ORC provides">
 <meta property="og:locale" content="ZH">
-<meta property="og:updated_time" content="2018-11-30T02:42:24.499Z">
+<meta property="og:updated_time" content="2019-03-05T03:08:32.499Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redash权限管理">
-<meta name="twitter:description" content="前言Reash是一个数据查询平台，必定会涉及权限管理。主要由3个概念：组（group）,用户（user）， 数据源（data source）。 group在最上层，一个group对应多个user 和 data source。反之也可行，但不利于权限的管理。 权限功能主要基于组（group）和所属数据源(data source)来控制。一个用户（user）必须属于一个或多个组，当新用户进入时，该用户">
+<meta name="twitter:title" content="大话行式存储与列式存储">
+<meta name="twitter:description" content="Apache ORC ORC, Optimized Row Columnar. the smallest, fastest columnar storage for Hadoop workloads 背景：https://orc.apache.org/docs/  特性：  ACID Support Built-in Indexes Complex Types  索引结构：ORC provides">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://guzhenping.com/2018/05/21/Redash 权限管理/index.html">
+  <link rel="canonical" href="http://guzhenping.com/2019/02/26/大话行式存储与列式存储/index.html">
   
     <link rel="alternate" href="/atom.xml" title="谷震平的博客" type="application/atom+xml">
   
@@ -280,14 +280,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Redash 权限管理" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <article id="post-大话行式存储与列式存储" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Redash权限管理
+      大话行式存储与列式存储
     </h1>
   
 
@@ -295,20 +295,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2018/05/21/Redash 权限管理/" class="article-date">
-	  <time datetime="2018-05-21T09:04:48.000Z" itemprop="datePublished">2018-05-21</time>
+	<a href="/2019/02/26/大话行式存储与列式存储/" class="article-date">
+	  <time datetime="2019-02-26T02:38:34.000Z" itemprop="datePublished">2019-02-26</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/大数据/">大数据</a>►<a class="article-category-link" href="/categories/大数据/可视化/">可视化</a>
+    <a class="article-category-link" href="/categories/大数据/">大数据</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Redash/">Redash</a>, <a class="article-tag-link" href="/tags/大数据开发/">大数据开发</a>
+	<a class="article-tag-link" href="/tags/Hadoop/">Hadoop</a>, <a class="article-tag-link" href="/tags/OLAP/">OLAP</a>, <a class="article-tag-link" href="/tags/大数据开发/">大数据开发</a>, <a class="article-tag-link" href="/tags/数据仓库/">数据仓库</a>
   </span>
 
 
@@ -321,51 +321,80 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/05/21/Redash 权限管理/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/02/26/大话行式存储与列式存储/#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 616(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 171(words)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 2(minutes)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 1(minutes)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Reash是一个数据查询平台，必定会涉及权限管理。主要由3个概念：组（group）,用户（user）， 数据源（data source）。</p>
-<p>group在最上层，一个group对应多个user 和 data source。反之也可行，但不利于权限的管理。</p>
-<p>权限功能主要基于组（group）和所属数据源(data source)来控制。一个用户（user）必须属于一个或多个组，当新用户进入时，该用户默认在“default组”。在新增一个数据源时，该数据源默认归属于”default组”。</p>
-<a id="more"></a>
-<h2 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a>数据源</h2><p>数据源有两个权限设置：</p>
-<ul>
-<li>Full access，即：该组的用户可操作被保存的查询（可以改SQL源码），创建一个新的查询</li>
-<li>View Only access，即：该组的用户只能阅读被保存的查询（看不到SQL源码）及其结果</li>
-</ul>
-<p>对于不需要写SQL取结果的用户群来说，应该与需要写SQL取结果的用户群体区分在不同组（group）中。比如：基础架构查看报表组，基础架构制作报表组。</p>
-<p>如果想对一个组的用户做table级别的查询限制，官方提供的方案：</p>
-<blockquote>
-<p>The idea is to leverage your database’s security model and hence create a user with access to the tables/columns you want to give access to. Create a data source that’s using this user and then associate it with a group of users who need this level of access.</p>
+        <h2 id="Apache-ORC"><a href="#Apache-ORC" class="headerlink" title="Apache ORC"></a>Apache ORC</h2><blockquote>
+<p>ORC, Optimized Row Columnar.</p>
+<p>the smallest, fastest columnar storage for Hadoop workloads</p>
+<p>背景：<a href="https://orc.apache.org/docs/" target="_blank" rel="noopener">https://orc.apache.org/docs/</a></p>
 </blockquote>
-<p>翻译过来：在建立数据源时，配置一个带有权限控制的数据库用户即可。比如，连接mysql时，用一个只能查询测试db/table的用户名进行连接。把这个数据源赋给某个组，然后该组的所有用户，只能看到这个数据源里的测试db/table。</p>
-<h2 id="组"><a href="#组" class="headerlink" title="组"></a>组</h2><p>组可设置的权限有：</p>
+<p>特性：</p>
 <ul>
-<li>admin/super_admin,管理员/超级管理员，可用所用功能</li>
-<li>create_dashboard,创建dashboard</li>
-<li>create_query,创建SQL查询</li>
-<li>edit_dashboard,编辑自己/别人的dashboard</li>
-<li>edit_query,编辑自己/别人的SQL查询</li>
-<li>view_query,查看已经存在的SQL</li>
-<li>view_source,查看SQL源码</li>
-<li>execute_query,执行SQL</li>
-<li>list_users,看到所有用户</li>
-<li>schedule_query,设置定时刷新</li>
-<li>list_dashboards,看到所用的dashboard</li>
-<li>list_alerts,看到所有的提醒任务</li>
-<li>list_data_sources,看到所有的数据源</li>
+<li>ACID Support</li>
+<li>Built-in Indexes</li>
+<li>Complex Types</li>
 </ul>
-<p>将以上权限赋给不同的组，每个组的用户就可以实现不同的功能。Redash不强调对用户做太多的权限控制，因为一个用户必须要归属于一个组。所以，对组做现在即可。</p>
+<p>索引结构：<br>ORC provides three level of indexes within each file:</p>
+<ul>
+<li>file level - statistics about the values in each column across the entire file（ file footer）</li>
+<li>stripe level - statistics about the values in each column for each stripe</li>
+<li>row level - statistics about the values in each column for each set of 10,000 rows within a stripe</li>
+</ul>
+<p>支持类型：</p>
+<p>ORC provides a rich set of scalar and compound types:</p>
+<ul>
+<li>Integer<ul>
+<li>boolean (1 bit)</li>
+<li>tinyint (8 bit)</li>
+<li>smallint (16 bit)</li>
+<li>int (32 bit)</li>
+<li>bigint (64 bit)</li>
+</ul>
+</li>
+<li>Floating point<ul>
+<li>float</li>
+<li>double</li>
+</ul>
+</li>
+<li>String types<ul>
+<li>string</li>
+<li>char</li>
+<li>varchar</li>
+</ul>
+</li>
+<li>Binary blobs<ul>
+<li>binary</li>
+</ul>
+</li>
+<li>Date/time<ul>
+<li>timestamp</li>
+<li>date</li>
+</ul>
+</li>
+<li>Compound types<ul>
+<li>struct</li>
+<li>list</li>
+<li>map</li>
+<li>union</li>
+</ul>
+</li>
+</ul>
+<p>参考文献：</p>
+<ul>
+<li><a href="https://ericfu.me/columnar-storage-overview-storage/" target="_blank" rel="noopener">处理海量数据：列式存储综述（存储篇）</a></li>
+<li><a href="https://www.cnblogs.com/ITtangtang/p/7677912.html" target="_blank" rel="noopener">大数据：Hive - ORC 文件存储格式</a></li>
+</ul>
 
       
     </div>
@@ -375,7 +404,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://guzhenping.com/2018/05/21/Redash 权限管理/" title="Redash权限管理" target="_blank" rel="external">http://guzhenping.com/2018/05/21/Redash 权限管理/</a>
+      <a href="http://guzhenping.com/2019/02/26/大话行式存储与列式存储/" title="大话行式存储与列式存储" target="_blank" rel="external">http://guzhenping.com/2019/02/26/大话行式存储与列式存储/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -421,13 +450,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2018/05/24/大数据开发学习--Clickhouse/" title="大数据开发学习（Clickhouse）"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2018/01/24/大数据开发学习--Kylin/" title="大数据开发学习（Kylin）"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/02/14/Redash-二次开发入门/" title="Redash 二次开发入门"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

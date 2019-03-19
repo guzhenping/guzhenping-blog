@@ -18,22 +18,22 @@
   
   
   <title>Redash 二次开发入门 | 谷震平</title>
-  <meta name="description" content="前言在Redash二次开发上做了不少工作，修改bug，定制样式，定制功能，增加数据源等等。聊聊自己的二次开发经验。 懂分享的人，一定会快乐！ 环境准备Redash依赖的外部环境比较多，特别是Python相关的包，大多数时候一次装不成功，需要单独装或者更新安装其他系统依赖库，祝大家一次成功！ 环境准备可以参考另一篇blog，没用全说，其余的自己动动脑筋比较好。 附传送门：Redash开发指南 系统架">
+  <meta name="description" content="前言在Redash二次开发上做了不少工作，修改bug，定制样式，定制功能，增加数据源等等。聊聊自己的二次开发经验。 懂分享的人，一定会快乐！">
 <meta name="keywords" content="Redash">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redash 二次开发入门">
 <meta property="og:url" content="http://guzhenping.com/2019/02/14/Redash-二次开发入门/index.html">
 <meta property="og:site_name" content="谷震平的博客">
-<meta property="og:description" content="前言在Redash二次开发上做了不少工作，修改bug，定制样式，定制功能，增加数据源等等。聊聊自己的二次开发经验。 懂分享的人，一定会快乐！ 环境准备Redash依赖的外部环境比较多，特别是Python相关的包，大多数时候一次装不成功，需要单独装或者更新安装其他系统依赖库，祝大家一次成功！ 环境准备可以参考另一篇blog，没用全说，其余的自己动动脑筋比较好。 附传送门：Redash开发指南 系统架">
+<meta property="og:description" content="前言在Redash二次开发上做了不少工作，修改bug，定制样式，定制功能，增加数据源等等。聊聊自己的二次开发经验。 懂分享的人，一定会快乐！">
 <meta property="og:locale" content="ZH">
 <meta property="og:image" content="http://guzhenping.com/2019/02/14/Redash-二次开发入门/static/redash-architecture.png">
 <meta property="og:image" content="http://guzhenping.com/2019/02/14/Redash-二次开发入门/static/redash-backend.png">
 <meta property="og:image" content="http://guzhenping.com/2019/02/14/Redash-二次开发入门/static/directory.jpg">
 <meta property="og:image" content="http://guzhenping.com/2019/02/14/Redash-二次开发入门/static/xmq.png">
-<meta property="og:updated_time" content="2019-02-14T03:39:02.013Z">
+<meta property="og:updated_time" content="2019-02-26T02:37:35.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redash 二次开发入门">
-<meta name="twitter:description" content="前言在Redash二次开发上做了不少工作，修改bug，定制样式，定制功能，增加数据源等等。聊聊自己的二次开发经验。 懂分享的人，一定会快乐！ 环境准备Redash依赖的外部环境比较多，特别是Python相关的包，大多数时候一次装不成功，需要单独装或者更新安装其他系统依赖库，祝大家一次成功！ 环境准备可以参考另一篇blog，没用全说，其余的自己动动脑筋比较好。 附传送门：Redash开发指南 系统架">
+<meta name="twitter:description" content="前言在Redash二次开发上做了不少工作，修改bug，定制样式，定制功能，增加数据源等等。聊聊自己的二次开发经验。 懂分享的人，一定会快乐！">
 <meta name="twitter:image" content="http://guzhenping.com/2019/02/14/Redash-二次开发入门/static/redash-architecture.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://guzhenping.com/2019/02/14/Redash-二次开发入门/index.html">
@@ -166,7 +166,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/">大数据</a><span class="category-list-count">22</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/可视化/">可视化</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/">大数据</a><span class="category-list-count">23</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/可视化/">可视化</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -176,7 +176,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/Clickhouse/" style="font-size: 13.2px;">Clickhouse</a> <a href="/tags/Flink/" style="font-size: 13px;">Flink</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Kudu/" style="font-size: 13px;">Kudu</a> <a href="/tags/Kylin/" style="font-size: 13.2px;">Kylin</a> <a href="/tags/OLAP/" style="font-size: 13.8px;">OLAP</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/Redash/" style="font-size: 13.6px;">Redash</a> <a href="/tags/Redis/" style="font-size: 13px;">Redis</a> <a href="/tags/Vue-js/" style="font-size: 13px;">Vue.js</a> <a href="/tags/前端开发/" style="font-size: 13px;">前端开发</a> <a href="/tags/大数据开发/" style="font-size: 13.8px;">大数据开发</a> <a href="/tags/实时流/" style="font-size: 13px;">实时流</a> <a href="/tags/数据仓库/" style="font-size: 13.4px;">数据仓库</a> <a href="/tags/集群运维/" style="font-size: 14px;">集群运维</a>
+      <a href="/tags/Clickhouse/" style="font-size: 13.2px;">Clickhouse</a> <a href="/tags/Flink/" style="font-size: 13px;">Flink</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Kudu/" style="font-size: 13px;">Kudu</a> <a href="/tags/Kylin/" style="font-size: 13.2px;">Kylin</a> <a href="/tags/OLAP/" style="font-size: 13.6px;">OLAP</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/Redash/" style="font-size: 13.4px;">Redash</a> <a href="/tags/Redis/" style="font-size: 13px;">Redis</a> <a href="/tags/Vue-js/" style="font-size: 13px;">Vue.js</a> <a href="/tags/前端开发/" style="font-size: 13px;">前端开发</a> <a href="/tags/大数据开发/" style="font-size: 13.6px;">大数据开发</a> <a href="/tags/实时流/" style="font-size: 13px;">实时流</a> <a href="/tags/数据仓库/" style="font-size: 13.4px;">数据仓库</a> <a href="/tags/集群运维/" style="font-size: 13.8px;">集群运维</a>
     </div>
   </div>
 
@@ -185,7 +185,7 @@
   <div class="widget">
     <h3 class="widget-title">Archive</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -197,6 +197,21 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/大数据/">大数据</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/02/26/大话行式存储与列式存储/" class="title">大话行式存储与列式存储</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-02-26T02:38:34.000Z" itemprop="datePublished">2019-02-26</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -253,21 +268,6 @@
               </p>
               <p class="item-date">
                 <time datetime="2018-11-02T09:04:49.000Z" itemprop="datePublished">2018-11-02</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/大数据/">大数据</a>
-              </p>
-              <p class="item-title">
-                <a href="/2018/11/02/大数据开发学习--Redash/" class="title">Redash开发指南</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2018-11-02T09:04:48.000Z" itemprop="datePublished">2018-11-02</time>
               </p>
             </div>
           </li>
@@ -341,6 +341,7 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在Redash二次开发上做了不少工作，修改bug，定制样式，定制功能，增加数据源等等。聊聊自己的二次开发经验。</p>
 <p><strong>懂分享的人，一定会快乐！</strong></p>
+<a id="more"></a>
 <h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>Redash依赖的外部环境比较多，特别是Python相关的包，大多数时候一次装不成功，需要单独装或者更新安装其他系统依赖库，祝大家一次成功！</p>
 <p>环境准备可以参考另一篇blog，没用全说，其余的自己动动脑筋比较好。</p>
 <p>附传送门：<a href="http://guzhenping.com/2018/11/02/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0--Redash/">Redash开发指南</a></p>
@@ -484,6 +485,10 @@ def configuration_schema(cls):
   <div class="bar-inner">
   
   <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/02/26/大话行式存储与列式存储/" title="大话行式存储与列式存储"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
     
     
     <li class="next">
