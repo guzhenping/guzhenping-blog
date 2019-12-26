@@ -18,21 +18,21 @@
   
   
   <title>区块链学习笔记--EKT设计要素 | 谷震平</title>
-  <meta name="description" content="前言解析过EKT项目，把认为对自己有用的点都总结下。 区块链项目的设计，多数类似BTC和ETH。当然还有像Fabric这种企业级联盟链，用到了kafka和gossip等技术栈。 笔者做了一段时间的底层开发，深知架构设计的重要性。对于高手来说，没有的轮子是可以自己造的，造个大规模消息/任务队列都只是想不想写的事情。但在企业中开发，追求的是稳定、性能、成本等等，所以通常希望使用开源组件，二次开发。 鉴">
+  <meta name="description" content="前言笔者做了一段时间的区块链底层开发，深知架构设计的重要性。对于高手来说，没有的轮子是可以自己造的，造个大规模消息/任务队列都只是想不想写的事情。但在企业中开发，追求的是稳定、性能、成本等等，所以通常希望使用开源组件，二次开发。 解析过EKT项目，鉴于自己还不是高手，把认为对自己有用的点都总结下。 账户设计和ETH类似，用了账户模型，结合Merkle树进行设计，通过记录nonce值防止双花攻击。">
 <meta name="keywords" content="区块链">
 <meta property="og:type" content="article">
 <meta property="og:title" content="区块链学习笔记--EKT设计要素">
 <meta property="og:url" content="http://guzhenping.com/2019/03/19/区块链学习笔记-EKT设计要素/index.html">
 <meta property="og:site_name" content="谷震平的博客">
-<meta property="og:description" content="前言解析过EKT项目，把认为对自己有用的点都总结下。 区块链项目的设计，多数类似BTC和ETH。当然还有像Fabric这种企业级联盟链，用到了kafka和gossip等技术栈。 笔者做了一段时间的底层开发，深知架构设计的重要性。对于高手来说，没有的轮子是可以自己造的，造个大规模消息/任务队列都只是想不想写的事情。但在企业中开发，追求的是稳定、性能、成本等等，所以通常希望使用开源组件，二次开发。 鉴">
+<meta property="og:description" content="前言笔者做了一段时间的区块链底层开发，深知架构设计的重要性。对于高手来说，没有的轮子是可以自己造的，造个大规模消息/任务队列都只是想不想写的事情。但在企业中开发，追求的是稳定、性能、成本等等，所以通常希望使用开源组件，二次开发。 解析过EKT项目，鉴于自己还不是高手，把认为对自己有用的点都总结下。 账户设计和ETH类似，用了账户模型，结合Merkle树进行设计，通过记录nonce值防止双花攻击。">
 <meta property="og:locale" content="ZH">
 <meta property="og:image" content="http://guzhenping.com/2019/03/19/区块链学习笔记-EKT设计要素/static/主网启动流程图.jpg">
 <meta property="og:image" content="http://guzhenping.com/2019/03/19/区块链学习笔记-EKT设计要素/static/普通数据同步流程图.jpg">
 <meta property="og:image" content="http://guzhenping.com/2019/03/19/区块链学习笔记-EKT设计要素/static/恢复本地数据流程图.jpg">
-<meta property="og:updated_time" content="2019-03-19T08:22:17.730Z">
+<meta property="og:updated_time" content="2019-03-19T08:29:16.415Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="区块链学习笔记--EKT设计要素">
-<meta name="twitter:description" content="前言解析过EKT项目，把认为对自己有用的点都总结下。 区块链项目的设计，多数类似BTC和ETH。当然还有像Fabric这种企业级联盟链，用到了kafka和gossip等技术栈。 笔者做了一段时间的底层开发，深知架构设计的重要性。对于高手来说，没有的轮子是可以自己造的，造个大规模消息/任务队列都只是想不想写的事情。但在企业中开发，追求的是稳定、性能、成本等等，所以通常希望使用开源组件，二次开发。 鉴">
+<meta name="twitter:description" content="前言笔者做了一段时间的区块链底层开发，深知架构设计的重要性。对于高手来说，没有的轮子是可以自己造的，造个大规模消息/任务队列都只是想不想写的事情。但在企业中开发，追求的是稳定、性能、成本等等，所以通常希望使用开源组件，二次开发。 解析过EKT项目，鉴于自己还不是高手，把认为对自己有用的点都总结下。 账户设计和ETH类似，用了账户模型，结合Merkle树进行设计，通过记录nonce值防止双花攻击。">
 <meta name="twitter:image" content="http://guzhenping.com/2019/03/19/区块链学习笔记-EKT设计要素/static/主网启动流程图.jpg">
   <!-- Canonical links -->
   <link rel="canonical" href="http://guzhenping.com/2019/03/19/区块链学习笔记-EKT设计要素/index.html">
@@ -323,7 +323,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/19/区块链学习笔记-EKT设计要素/#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 1.6k(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 1.5k(words)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 5(minutes)</span>
@@ -333,10 +333,8 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>解析过EKT项目，把认为对自己有用的点都总结下。</p>
-<p>区块链项目的设计，多数类似BTC和ETH。当然还有像Fabric这种企业级联盟链，用到了kafka和gossip等技术栈。</p>
-<p>笔者做了一段时间的底层开发，深知架构设计的重要性。对于高手来说，没有的轮子是可以自己造的，造个大规模消息/任务队列都只是想不想写的事情。但在企业中开发，追求的是稳定、性能、成本等等，所以通常希望使用开源组件，二次开发。</p>
-<p>鉴于自己还不是高手，就把之前接触过的EKT底层组件都总结下。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>笔者做了一段时间的区块链底层开发，深知架构设计的重要性。对于高手来说，没有的轮子是可以自己造的，造个大规模消息/任务队列都只是想不想写的事情。但在企业中开发，追求的是稳定、性能、成本等等，所以通常希望使用开源组件，二次开发。</p>
+<p>解析过EKT项目，鉴于自己还不是高手，把认为对自己有用的点都总结下。</p>
 <h2 id="账户设计"><a href="#账户设计" class="headerlink" title="账户设计"></a>账户设计</h2><p>和ETH类似，用了账户模型，结合Merkle树进行设计，通过记录nonce值防止双花攻击。</p>
 <p>核心逻辑：</p>
 <pre><code>func GenerateKeyPair() (pubkey, privkey []byte) {
